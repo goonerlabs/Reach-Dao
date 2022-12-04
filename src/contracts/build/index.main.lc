@@ -1,0 +1,2485 @@
+#lang dk
+parts {
+  "Deployer" = interact {
+    getProposal = IT_Val Object({"deadline": UInt, "description": Bytes(180), "id": UInt, "isProposal": Bool, "link": Bytes(150), "owner": Address, "title": Bytes(25)})},
+  "Voters_claimRefund" = interact {
+    in = IT_Fun [] Tuple(),
+    out = IT_Fun [Tuple(),Struct([['"didRefund"', Bool], ['"balance"', UInt]])] Null},
+  "Voters_contribute" = interact {
+    in = IT_Fun [] Tuple(UInt),
+    out = IT_Fun [Tuple(UInt),UInt] Null},
+  "Voters_contributed" = interact {
+    in = IT_Fun [] Tuple(UInt, UInt),
+    out = IT_Fun [Tuple(UInt, UInt),Null] Null},
+  "Voters_created" = interact {
+    in = IT_Fun [] Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])),
+    out = IT_Fun [Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])),Null] Null},
+  "Voters_downvote" = interact {
+    in = IT_Fun [] Tuple(),
+    out = IT_Fun [Tuple(),UInt] Null},
+  "Voters_downvoted" = interact {
+    in = IT_Fun [] Tuple(UInt, UInt),
+    out = IT_Fun [Tuple(UInt, UInt),Null] Null},
+  "Voters_projectDown" = interact {
+    in = IT_Fun [] Tuple(UInt),
+    out = IT_Fun [Tuple(UInt),Null] Null},
+  "Voters_timedOut" = interact {
+    in = IT_Fun [] Tuple(UInt, UInt),
+    out = IT_Fun [Tuple(UInt, UInt),Null] Null},
+  "Voters_upvote" = interact {
+    in = IT_Fun [] Tuple(),
+    out = IT_Fun [Tuple(),UInt] Null},
+  "Voters_upvoted" = interact {
+    in = IT_Fun [] Tuple(UInt, UInt),
+    out = IT_Fun [Tuple(UInt, UInt),Null] Null}};
+
+// maps
+{
+  map0 = Address,
+  map1 = UInt,
+  map2 = Null}
+// initialization
+
+{
+  }
+{
+  }
+{
+  Just "Voters" = {
+    claimRefund = ("Voters_claimRefund", IT_Fun [] Struct([['"didRefund"', Bool], ['"balance"', UInt]])),
+    contribute = ("Voters_contribute", IT_Fun [UInt] UInt),
+    contributed = ("Voters_contributed", IT_Fun [UInt,UInt] Null),
+    created = ("Voters_created", IT_Fun [Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])] Null),
+    downvote = ("Voters_downvote", IT_Fun [] UInt),
+    downvoted = ("Voters_downvoted", IT_Fun [UInt,UInt] Null),
+    projectDown = ("Voters_projectDown", IT_Fun [UInt] Null),
+    timedOut = ("Voters_timedOut", IT_Fun [UInt,UInt] Null),
+    upvote = ("Voters_upvote", IT_Fun [] UInt),
+    upvoted = ("Voters_upvoted", IT_Fun [UInt,UInt] Null)}}
+{
+  Voters_claimRefund = Nothing,
+  Voters_contribute = Nothing,
+  Voters_contributed = Nothing,
+  Voters_created = Nothing,
+  Voters_downvote = Nothing,
+  Voters_downvoted = Nothing,
+  Voters_projectDown = Nothing,
+  Voters_timedOut = Nothing,
+  Voters_upvote = Nothing,
+  Voters_upvoted = Nothing}
+{
+  Nothing = {
+    create = [UInt, Bytes(25), Bytes(150), Bytes(180), Address, Contract, UInt],
+    created = [UInt, Bytes(25), Bytes(150), Bytes(180), Address, Contract, UInt],
+    log = [Bytes(20), UInt],
+    that = [Bytes(20), UInt, UInt]}}
+const v5 : Object({"i": UInt, "sign": Bool})* = {
+  i = 0,
+  sign = true};
+const v7 : Object({"i": UInt, "sign": Bool})* = {
+  i = 0,
+  sign = true};
+const upVotes/23 : UInt* = impossible(Cannot inspect value from `forall`);
+const downVotes/26 : UInt* = impossible(Cannot inspect value from `forall`);
+let x/28 : UInt;
+do(Just x/28 : UInt) {
+  const v29 : Bool* = downVotes/26 > upVotes/23;
+  local(Just x/28 : UInt) if v29 then {
+    x/28 : UInt = 0;
+    exit(); }
+  else {
+    const v30 : Bool* = upVotes/23 == downVotes/26;
+    local(Just x/28 : UInt) if v30 then {
+      x/28 : UInt = 0;
+      exit(); }
+    else {
+      x/28 : UInt = 1;
+      exit(); };
+    exit(); };
+  exit(); };
+const v32 : Bool* = 0 <= x/28;
+const v33 : Bool* = x/28 < 2;
+const v34 : Bool* = (v32 ? v33 : false);
+const eff = claim(CT_Assert)(v34, Nothing);
+only("Deployer") {
+  const v35 : Object({"deadline": UInt, "description": Bytes(180), "id": UInt, "isProposal": Bool, "link": Bytes(150), "owner": Address, "title": Bytes(25)})* = "Deployer".interact.getProposal;
+  const v36 : UInt* = v35.deadline;
+  const v37 : Bytes(180)* = v35.description;
+  const v38 : UInt* = v35.id;
+  const v39 : Bool* = v35.isProposal;
+  const v40 : Bytes(150)* = v35.link;
+  const v41 : Address* = v35.owner;
+  const v42 : Bytes(25)* = v35.title;
+  exit(); };
+only("Voters_claimRefund") {
+  exit(); };
+only("Voters_contribute") {
+  exit(); };
+only("Voters_contributed") {
+  exit(); };
+only("Voters_created") {
+  exit(); };
+only("Voters_downvote") {
+  exit(); };
+only("Voters_downvoted") {
+  exit(); };
+only("Voters_projectDown") {
+  exit(); };
+only("Voters_timedOut") {
+  exit(); };
+only("Voters_upvote") {
+  exit(); };
+only("Voters_upvoted") {
+  exit(); };
+fluid netBalance := 0
+only("Deployer") {
+  const v44 : Address* = selfAddress("Deployer", False, 43 )();
+  let v45 : Null;
+  do(Just v45 : Null) {
+    const title/46 : Bytes(25)* = v35.title;
+    const link/47 : Bytes(150)* = v35.link;
+    const description/48 : Bytes(180)* = v35.description;
+    const owner/49 : Address* = v35.owner;
+    const id/50 : UInt* = v35.id;
+    const isProposal/51 : Bool* = v35.isProposal;
+    const deadline/52 : UInt* = v35.deadline;
+    v45 : Null = null;
+    exit(); };
+  exit(); };
+only("Deployer") {
+  exit(); };
+publish(@?)
+  .case("Deployer").send({
+    isClass = False,
+    msg = [description/48, isProposal/51],
+    pay = [0, ],
+    when = true})
+  .recv({
+    didSend = didPublish/58 : Bool,
+    from = Deployer/53 : Address,
+    msg = [description/54 : Bytes(180), isProposal/55 : Bool],
+    secs = thisConsensusSecs/57 : UInt,
+    time = thisConsensusTime/56 : UInt}){
+    const eff = checkPay(0, None);
+    fluid thisConsensusTime := thisConsensusTime/56
+    fluid thisConsensusSecs := thisConsensusSecs/57
+    fluid didPublish := didPublish/58
+    if isProposal/55 then {
+      liftBoundary();
+      commit();
+      only("Deployer") {
+        exit(); };
+      publish(@?)
+        .case("Deployer").send({
+          isClass = False,
+          msg = [title/46, link/47, owner/49, id/50, deadline/52],
+          pay = [0, ],
+          when = true})
+        .recv({
+          didSend = didPublish/68 : Bool,
+          from = Deployer/59 : Address,
+          msg = [title/60 : Bytes(25), link/61 : Bytes(150), owner/62 : Address, id/63 : UInt, deadline/64 : UInt],
+          secs = thisConsensusSecs/67 : UInt,
+          time = thisConsensusTime/66 : UInt}){
+          const eff = checkPay(0, None);
+          const v65 : Bool* = Deployer/53 == Deployer/59;
+          const eff = claim(CT_Require)(v65, Just "sender correct");
+          fluid thisConsensusTime := thisConsensusTime/66
+          fluid thisConsensusSecs := thisConsensusSecs/67
+          fluid didPublish := didPublish/68
+          const v69 : Contract* = getContract()();
+          thisConsensusTime/70 : UInt <- fluid thisConsensusTime
+          const eff = emitLog(event(Nothing, created))(id/63, title/60, link/61, description/54, owner/62, v69, thisConsensusTime/70 );
+          lastConsensusTime/72 : UInt <- fluid lastConsensusTime
+          const value/73 : UInt* = lastConsensusTime/72 + deadline/64;
+          netBalance/79 : UInt <- fluid netBalance
+          loopvar {
+            amtTotal/80 : UInt = amtTotal/79,
+            downvote/81 : UInt = 0,
+            upvote/82 : UInt = 0};
+          invariant{
+            [invariant(netBalance/84 : UInt <- fluid netBalance
+            const v85 : Bool* = netBalance/84 == amtTotal/80;
+            exit();
+            return v85;, Nothing)] }
+          while{
+            lastConsensusTime/88 : UInt <- fluid lastConsensusTime
+            const v89 : Bool* = endTime/73 > lastConsensusTime/88;
+            exit();
+            return v89; }
+          {
+            liftBoundary();
+            const v326 : UInt* = UInt.max - value/73;
+            const _/327 : Bool* = v326 >= 0;
+            let v328 : Null;
+            do(Just v328 : Null) {
+              v328 : Null = null;
+              exit(); };
+            const v329 : Data({"Left": UInt, "Right": UInt})* = <Left value/73>;
+            const v330 : Data({"Left": UInt, "Right": UInt})* = <Left value/73>;
+            fluid baseWaitTime := value/73
+            commit();
+            only("Voters_upvote") {
+              const v132 : Address* = selfAddress("Voters_upvote", True, 131 )();
+              let v133 : Null;
+              do(Just v133 : Null) {
+                const _/136 : Tuple()* = protect<Tuple()>("Voters_upvote".interact.in());
+                let v137 : Null;
+                do(Just v137 : Null) {
+                  v137 : Null = null;
+                  exit(); };
+                const v139 : Object({"msg": Tuple()})* = {
+                  msg = .api76.dom/136};
+                const v140 : Data({"Voters_contribute0_91": Null, "Voters_downvote0_91": Null, "Voters_upvote0_91": Null})* = <Voters_upvote0_91 null>;
+                const v141 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})* = <Voters_upvote0_90 msg/136>;
+                const v142 : Object({"_local": Data({"Voters_contribute0_91": Null, "Voters_downvote0_91": Null, "Voters_upvote0_91": Null}), "msg": Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()}), "when": Bool})* = {
+                  _local = v140,
+                  msg = v141,
+                  when = true};
+                v133 : Null = null;
+                exit(); };
+              exit(); };
+            only("Voters_downvote") {
+              const v144 : Address* = selfAddress("Voters_downvote", True, 143 )();
+              let v145 : Null;
+              do(Just v145 : Null) {
+                const _/148 : Tuple()* = protect<Tuple()>("Voters_downvote".interact.in());
+                let v149 : Null;
+                do(Just v149 : Null) {
+                  v149 : Null = null;
+                  exit(); };
+                const v151 : Object({"msg": Tuple()})* = {
+                  msg = .api77.dom/148};
+                const v152 : Data({"Voters_contribute0_91": Null, "Voters_downvote0_91": Null, "Voters_upvote0_91": Null})* = <Voters_downvote0_91 null>;
+                const v153 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})* = <Voters_downvote0_90 msg/148>;
+                const v154 : Object({"_local": Data({"Voters_contribute0_91": Null, "Voters_downvote0_91": Null, "Voters_upvote0_91": Null}), "msg": Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()}), "when": Bool})* = {
+                  _local = v152,
+                  msg = v153,
+                  when = true};
+                v145 : Null = null;
+                exit(); };
+              exit(); };
+            only("Voters_contribute") {
+              const v156 : Address* = selfAddress("Voters_contribute", True, 155 )();
+              let v157 : Null;
+              do(Just v157 : Null) {
+                const .api78.dom/160 : Tuple(UInt)* = protect<Tuple(UInt)>("Voters_contribute".interact.in());
+                const v161 : UInt* = .api78.dom/160[0];
+                const payment/162 : UInt* = .api78.dom/160[0];
+                const v163 : Bool* = amt/162 > 0;
+                let v164 : Null;
+                do(Just v164 : Null) {
+                  const eff = claim(CT_Assume)(v163, Just "Contribution too small");
+                  v164 : Null = null;
+                  exit(); };
+                const _/179 : UInt* = .api78.dom/160[0];
+                let v180 : Null;
+                do(Just v180 : Null) {
+                  v180 : Null = null;
+                  exit(); };
+                const v181 : Object({"msg": Tuple(UInt)})* = {
+                  msg = .api78.dom/160};
+                const v182 : UInt* = msg/160[0];
+                const v183 : Data({"Voters_contribute0_91": Null, "Voters_downvote0_91": Null, "Voters_upvote0_91": Null})* = <Voters_contribute0_91 null>;
+                const v184 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})* = <Voters_contribute0_90 msg/160>;
+                const v185 : Object({"_local": Data({"Voters_contribute0_91": Null, "Voters_downvote0_91": Null, "Voters_upvote0_91": Null}), "msg": Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()}), "when": Bool})* = {
+                  _local = v183,
+                  msg = v184,
+                  when = true};
+                v157 : Null = null;
+                exit(); };
+              exit(); };
+            only("Voters_contribute") {
+              const v186 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})* = <Voters_contribute0_90 msg/160>;
+              const payment/189 : UInt* = .api78.dom/160[0];
+              const v191 : Bool* = amt/189 > 0;
+              let v192 : Null;
+              do(Just v192 : Null) {
+                const eff = claim(CT_Assume)(v191, Just "Contribution too small");
+                v192 : Null = null;
+                exit(); };
+              exit(); };
+            only("Voters_downvote") {
+              const v207 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})* = <Voters_downvote0_90 msg/148>;
+              exit(); };
+            only("Voters_upvote") {
+              const v210 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})* = <Voters_upvote0_90 msg/136>;
+              exit(); };
+            publish(@?)
+              .timeout(Left value/73, {
+                only("Deployer") {
+                  exit(); };
+                publish(@?)
+                  .case("Deployer").send({
+                    isClass = False,
+                    msg = [],
+                    pay = [0, ],
+                    when = true})
+                  .recv({
+                    didSend = didPublish/336 : Bool,
+                    from = Deployer/332 : Address,
+                    msg = [],
+                    secs = thisConsensusSecs/335 : UInt,
+                    time = thisConsensusTime/334 : UInt}){
+                    const eff = checkPay(0, None);
+                    const v333 : Bool* = Deployer/53 == Deployer/332;
+                    const eff = claim(CT_Require)(v333, Just "sender correct");
+                    fluid thisConsensusTime := thisConsensusTime/334
+                    fluid thisConsensusSecs := thisConsensusSecs/335
+                    fluid didPublish := didPublish/336
+                    let v337 : UInt;
+                    do(Just v337 : UInt) {
+                      const v338 : Bool* = downVotes/81 > upVotes/82;
+                      local(Just v337 : UInt) if v338 then {
+                        v337 : UInt = 0;
+                        exit(); }
+                      else {
+                        const v339 : Bool* = upVotes/82 == downVotes/81;
+                        local(Just v337 : UInt) if v339 then {
+                          v337 : UInt = 0;
+                          exit(); }
+                        else {
+                          v337 : UInt = 1;
+                          exit(); };
+                        exit(); };
+                      exit(); };
+                    const v340 : Bool* = v337 == 1;
+                    if v340 then {
+                      const v341 : Bytes(20)* = "passed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                      const eff = emitLog(event(Nothing, log))(v341, id/63 );
+                      netBalance/342 : UInt <- fluid netBalance
+                      netBalance/343 : UInt <- fluid netBalance
+                      const v344 : Bool* = netBalance/342 <= netBalance/343;
+                      const eff = claim(CT_Assert)(v344, Just "balance sufficient for transfer");
+                      netBalance/345 : UInt <- fluid netBalance
+                      const v346 : UInt* = netBalance/345 - netBalance/342;
+                      fluid netBalance := v346
+                      const eff = transfer.(netBalance/342, None).to(owner/62);
+                      netBalance/435 : UInt <- fluid netBalance
+                      const v436 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/81, netBalance/435 ];
+                      const v331 : Tuple(UInt, UInt, UInt)* = v436;
+                      {
+                        amtTotal/80 : UInt = amtTotal/435,
+                        downvote/81 : UInt = downvote/81,
+                        upvote/82 : UInt = upvote/82}
+                      continue; }
+                    else {
+                      netBalance/347 : UInt <- fluid netBalance
+                      const v348 : Bool* = netBalance/347 > 0;
+                      if v348 then {
+                        const v349 : Bytes(20)* = "failed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                        const eff = emitLog(event(Nothing, log))(v349, id/63 );
+                        netBalance/352 : UInt <- fluid netBalance
+                        loopvar {
+                          currentBalance/353 : UInt = currentBalance/352};
+                        invariant{
+                          [invariant(netBalance/355 : UInt <- fluid netBalance
+                          const v356 : Bool* = netBalance/355 == currentBalance/353;
+                          exit();
+                          return v356;, Nothing)] }
+                        while{
+                          const v358 : Bool* = currentBalance/353 > 0;
+                          exit();
+                          return v358; }
+                        {
+                          liftBoundary();
+                          commit();
+                          only("Voters_claimRefund") {
+                            const v369 : Address* = selfAddress("Voters_claimRefund", True, 368 )();
+                            let v370 : Null;
+                            do(Just v370 : Null) {
+                              const _/372 : Tuple()* = protect<Tuple()>("Voters_claimRefund".interact.in());
+                              let v373 : Null;
+                              do(Just v373 : Null) {
+                                v373 : Null = null;
+                                exit(); };
+                              const v375 : Object({"msg": Tuple()})* = {
+                                msg = .api351.dom/372};
+                              v370 : Null = null;
+                              exit(); };
+                            exit(); };
+                          only("Voters_claimRefund") {
+                            exit(); };
+                          publish(@?)
+                            .case("Voters_claimRefund").send({
+                              isClass = True,
+                              msg = [.fork359.msg/372],
+                              pay = [0, ],
+                              when = true})
+                            .recv({
+                              didSend = didPublish/384 : Bool,
+                              from = v/377 : Address,
+                              msg = [.fork359.msg/378 : Tuple()],
+                              secs = thisConsensusSecs/383 : UInt,
+                              time = thisConsensusTime/382 : UInt}){
+                              let v380 : Null;
+                              do(Just v380 : Null) {
+                                v380 : Null = null;
+                                exit(); };
+                              const eff = checkPay(0, None);
+                              fluid thisConsensusTime := thisConsensusTime/382
+                              fluid thisConsensusSecs := thisConsensusSecs/383
+                              fluid didPublish := didPublish/384
+                              const eff = setApiDetails("Voters_claimRefund", [Tuple()], None, AIC_SpreadArg );
+                              const v/386 : Data({"None": Null, "Some": UInt})* = map1[this/377];
+                              let amountTransferable/388 : UInt;
+                              do(Just amountTransferable/388 : UInt) {
+                                switch (v/386 : Data({"None": Null, "Some": UInt}) { local}) {
+                                  case None as v/389 : Null/True: {
+                                    amountTransferable/388 : UInt = 0;
+                                    exit(); }
+                                  case Some as v/391 : UInt/True: {
+                                    amountTransferable/388 : UInt = x/391;
+                                    exit(); } }
+                                exit(); };
+                              netBalance/393 : UInt <- fluid netBalance
+                              const v394 : Bool* = netBalance/393 >= amountTransferable/388;
+                              const m/396 : Data({"None": Null, "Some": Null})* = map2[v/377];
+                              const v398 : UInt* = dataTag(m/396);
+                              const v399 : Bool* = v398 == 1;
+                              const v400 : Bool* = (v394 ? v399 : false);
+                              if v400 then {
+                                const v/401 : Data({"None": Null, "Some": Address})* = map0[this/377];
+                                let v403 : Address;
+                                do(Just v403 : Address) {
+                                  switch (v/401 : Data({"None": Null, "Some": Address}) { local}) {
+                                    case None as v/404 : Null/True: {
+                                      v403 : Address = Deployer/53;
+                                      exit(); }
+                                    case Some as v/406 : Address/True: {
+                                      v403 : Address = x/406;
+                                      exit(); } }
+                                  exit(); };
+                                netBalance/408 : UInt <- fluid netBalance
+                                const v409 : Bool* = amountTransferable/388 <= netBalance/408;
+                                const eff = claim(CT_Assert)(v409, Just "balance sufficient for transfer");
+                                netBalance/410 : UInt <- fluid netBalance
+                                const v411 : UInt* = netBalance/410 - amountTransferable/388;
+                                fluid netBalance := v411
+                                const eff = transfer.(amountTransferable/388, None).to(v403);
+                                const eff = delete map2[v/377];
+                                const v412 : Null* = null;
+                                const v413 : Bytes(20)* = "refundPassed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                                const eff = emitLog(event(Nothing, log))(v413, id/63 );
+                                const currentBal/414 : UInt* = currentBalance/353 - amountTransferable/388;
+                                const v416 : Struct([['"didRefund"', Bool], ['"balance"', UInt]])* = struct[(didRefund, true ), (balance, currentBal/414 ) ];
+                                const .api351.rngl/417 : Struct([['"didRefund"', Bool], ['"balance"', UInt]])* = emitLog(api("Voters_claimRefund"))(v416 );
+                                only("Voters_claimRefund") {
+                                  const v419 : Address* = selfAddress("Voters_claimRefund", True, 418 )();
+                                  let v420 : Null;
+                                  do(Just v420 : Null) {
+                                    didPublish/421 : Bool <- fluid didPublish
+                                    local(Just v420 : Null) if didPublish/421 then {
+                                      const v422 : Bool* = .api351.rngl/417.didRefund;
+                                      const v423 : UInt* = .api351.rngl/417.balance;
+                                      const eff = protect<Null>("Voters_claimRefund".interact.out(.api351.dom/378, .api351.rngl/417 ));
+                                      exit(); }
+                                    else {
+                                      exit(); };
+                                    v420 : Null = null;
+                                    exit(); };
+                                  exit(); };
+                                const v415 : Null* = null;
+                                const currentBalance/385 : UInt* = currentBal/414;
+                                {
+                                  currentBalance/353 : UInt = currentBalance/385}
+                                continue; }
+                              else {
+                                const v424 : Bytes(20)* = "refundFailed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                                const eff = emitLog(event(Nothing, log))(v424, id/63 );
+                                const v426 : Struct([['"didRefund"', Bool], ['"balance"', UInt]])* = struct[(didRefund, false ), (balance, currentBalance/353 ) ];
+                                const .api351.rngl/427 : Struct([['"didRefund"', Bool], ['"balance"', UInt]])* = emitLog(api("Voters_claimRefund"))(v426 );
+                                only("Voters_claimRefund") {
+                                  const v429 : Address* = selfAddress("Voters_claimRefund", True, 428 )();
+                                  let v430 : Null;
+                                  do(Just v430 : Null) {
+                                    didPublish/431 : Bool <- fluid didPublish
+                                    local(Just v430 : Null) if didPublish/431 then {
+                                      const v432 : Bool* = .api351.rngl/427.didRefund;
+                                      const v433 : UInt* = .api351.rngl/427.balance;
+                                      const eff = protect<Null>("Voters_claimRefund".interact.out(.api351.dom/378, .api351.rngl/427 ));
+                                      exit(); }
+                                    else {
+                                      exit(); };
+                                    v430 : Null = null;
+                                    exit(); };
+                                  exit(); };
+                                const v425 : Null* = null;
+                                const currentBalance/385 : UInt* = currentBalance/353;
+                                {
+                                  currentBalance/353 : UInt = currentBalance/385}
+                                continue; }; }
+                             }
+                        const v434 : Bytes(20)* = "down\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                        const eff = emitLog(event(Nothing, log))(v434, id/63 );
+                        netBalance/435 : UInt <- fluid netBalance
+                        const v436 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/81, netBalance/435 ];
+                        const v331 : Tuple(UInt, UInt, UInt)* = v436;
+                        {
+                          amtTotal/80 : UInt = amtTotal/435,
+                          downvote/81 : UInt = downvote/81,
+                          upvote/82 : UInt = upvote/82}
+                        continue; }
+                      else {
+                        const v434 : Bytes(20)* = "down\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                        const eff = emitLog(event(Nothing, log))(v434, id/63 );
+                        netBalance/435 : UInt <- fluid netBalance
+                        const v436 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/81, netBalance/435 ];
+                        const v331 : Tuple(UInt, UInt, UInt)* = v436;
+                        {
+                          amtTotal/80 : UInt = amtTotal/435,
+                          downvote/81 : UInt = downvote/81,
+                          upvote/82 : UInt = upvote/82}
+                        continue; }; }; }
+                   } )
+              .case("Voters_contribute").send({
+                isClass = True,
+                msg = [v186],
+                pay = [payment/189, ],
+                when = true})
+              .case("Voters_downvote").send({
+                isClass = True,
+                msg = [v207],
+                pay = [0, ],
+                when = true})
+              .case("Voters_upvote").send({
+                isClass = True,
+                msg = [v210],
+                pay = [0, ],
+                when = true})
+              .recv({
+                didSend = didPublish/252 : Bool,
+                from = v/213 : Address,
+                msg = [.fork90.msg/214 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})],
+                secs = thisConsensusSecs/251 : UInt,
+                time = thisConsensusTime/250 : UInt}){
+                switch (data_id/214 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})) {
+                  case Voters_contribute0_90 as data_id/217 : Tuple(UInt)/True: {
+                    let v218 : Null;
+                    do(Just v218 : Null) {
+                      v218 : Null = null;
+                      exit(); };
+                    const v216 : Null* = null;
+                    let v223 : UInt;
+                    do(Just v223 : UInt) {
+                      switch (data_id/214 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()}) { local}) {
+                        case Voters_contribute0_90 as data_id/224 : Tuple(UInt)/True: {
+                          const payment/226 : UInt* = .api78.dom/224[0];
+                          const v228 : Bool* = amt/226 > 0;
+                          let v229 : Null;
+                          do(Just v229 : Null) {
+                            const eff = claim(CT_Require)(v228, Just "Contribution too small");
+                            v229 : Null = null;
+                            exit(); };
+                          v223 : UInt = payment/226;
+                          exit(); }
+                        case Voters_downvote0_90 as data_id/244 : Tuple()/True: {
+                          v223 : UInt = 0;
+                          exit(); }
+                        case Voters_upvote0_90 as data_id/246 : Tuple()/True: {
+                          v223 : UInt = 0;
+                          exit(); } }
+                      exit(); };
+                    netBalance/248 : UInt <- fluid netBalance
+                    const v249 : UInt* = netBalance/248 + v223;
+                    fluid netBalance := v249
+                    const eff = checkPay(v223, None);
+                    fluid thisConsensusTime := thisConsensusTime/250
+                    fluid thisConsensusSecs := thisConsensusSecs/251
+                    fluid didPublish := didPublish/252
+                    switch (.fork90.msg/214 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})) {
+                      case Voters_contribute0_90 as .fork90.msg/253 : Tuple(UInt)/True: {
+                        const eff = setApiDetails("Voters_contribute", [Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})], Some Voters_contribute0_90, AIC_Case );
+                        const amt/255 : UInt* = .api78.dom/253[0];
+                        const v256 : Bool* = amt/255 > 0;
+                        let v257 : Null;
+                        do(Just v257 : Null) {
+                          const eff = claim(CT_Require)(v256, Just "Contribution too small");
+                          v257 : Null = null;
+                          exit(); };
+                        const _/272 : UInt* = .api78.dom/253[0];
+                        netBalance/273 : UInt <- fluid netBalance
+                        const .api78.rngl/275 : UInt* = emitLog(api("Voters_contribute"))(.api78.rng/273 );
+                        only("Voters_contribute") {
+                          const v277 : Address* = selfAddress("Voters_contribute", True, 276 )();
+                          let v278 : Null;
+                          do(Just v278 : Null) {
+                            didPublish/279 : Bool <- fluid didPublish
+                            local(Just v278 : Null) if didPublish/279 then {
+                              const v280 : UInt* = .api78.dom/253[0];
+                              const eff = protect<Null>("Voters_contribute".interact.out(.api78.dom/253, .api78.rngl/275 ));
+                              exit(); }
+                            else {
+                              exit(); };
+                            v278 : Null = null;
+                            exit(); };
+                          exit(); };
+                        const v274 : Null* = null;
+                        const m/282 : Data({"None": Null, "Some": Null})* = map2[v/213];
+                        const v284 : UInt* = dataTag(m/282);
+                        const v285 : Bool* = v284 == 1;
+                        if v285 then {
+                          const v/286 : Data({"None": Null, "Some": UInt})* = map1[this/213];
+                          let v288 : UInt;
+                          do(Just v288 : UInt) {
+                            switch (v/286 : Data({"None": Null, "Some": UInt}) { local}) {
+                              case None as v/289 : Null/True: {
+                                v288 : UInt = 0;
+                                exit(); }
+                              case Some as v/291 : UInt/True: {
+                                v288 : UInt = x/291;
+                                exit(); } }
+                            exit(); };
+                          const v293 : UInt* = v288 + amt/255;
+                          const eff = map1[this/213] = v293;
+                          const amtTotal/295 : UInt* = amtTotal/80 + amt/255;
+                          const v296 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/81, amtTotal/295 ];
+                          {
+                            amtTotal/80 : UInt = amtTotal/295,
+                            downvote/81 : UInt = downvote/81,
+                            upvote/82 : UInt = upvote/82}
+                          continue; }
+                        else {
+                          const eff = map0[this/213] = this/213;
+                          const eff = map1[this/213] = amt/255;
+                          const eff = map2[v/213] = null;
+                          const v294 : Null* = null;
+                          const amtTotal/295 : UInt* = amtTotal/80 + amt/255;
+                          const v296 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/81, amtTotal/295 ];
+                          {
+                            amtTotal/80 : UInt = amtTotal/295,
+                            downvote/81 : UInt = downvote/81,
+                            upvote/82 : UInt = upvote/82}
+                          continue; }; }
+                      case Voters_downvote0_90 as .fork90.msg/297 : Tuple()/True: {
+                        const eff = setApiDetails("Voters_downvote", [Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})], Some Voters_downvote0_90, AIC_Case );
+                        const .api77.rng/299 : UInt* = downvote/81 + 1;
+                        const .api77.rngl/301 : UInt* = emitLog(api("Voters_downvote"))(.api77.rng/299 );
+                        only("Voters_downvote") {
+                          const v303 : Address* = selfAddress("Voters_downvote", True, 302 )();
+                          let v304 : Null;
+                          do(Just v304 : Null) {
+                            didPublish/305 : Bool <- fluid didPublish
+                            local(Just v304 : Null) if didPublish/305 then {
+                              const eff = protect<Null>("Voters_downvote".interact.out(.api77.dom/297, .api77.rngl/301 ));
+                              exit(); }
+                            else {
+                              exit(); };
+                            v304 : Null = null;
+                            exit(); };
+                          exit(); };
+                        const v300 : Null* = null;
+                        const downvote/306 : UInt* = downvote/81 + 1;
+                        const v307 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/306, amtTotal/80 ];
+                        {
+                          amtTotal/80 : UInt = amtTotal/80,
+                          downvote/81 : UInt = downvote/306,
+                          upvote/82 : UInt = upvote/82}
+                        continue; }
+                      case Voters_upvote0_90 as .fork90.msg/308 : Tuple()/True: {
+                        const eff = setApiDetails("Voters_upvote", [Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})], Some Voters_upvote0_90, AIC_Case );
+                        const .api76.rng/310 : UInt* = upvote/82 + 1;
+                        const .api76.rngl/312 : UInt* = emitLog(api("Voters_upvote"))(.api76.rng/310 );
+                        only("Voters_upvote") {
+                          const v314 : Address* = selfAddress("Voters_upvote", True, 313 )();
+                          let v315 : Null;
+                          do(Just v315 : Null) {
+                            didPublish/316 : Bool <- fluid didPublish
+                            local(Just v315 : Null) if didPublish/316 then {
+                              const eff = protect<Null>("Voters_upvote".interact.out(.api76.dom/308, .api76.rngl/312 ));
+                              exit(); }
+                            else {
+                              exit(); };
+                            v315 : Null = null;
+                            exit(); };
+                          exit(); };
+                        const v311 : Null* = null;
+                        const upvote/317 : UInt* = upvote/82 + 1;
+                        const v318 : Tuple(UInt, UInt, UInt)* = [upvote/317, downvote/81, amtTotal/80 ];
+                        {
+                          amtTotal/80 : UInt = amtTotal/80,
+                          downvote/81 : UInt = downvote/81,
+                          upvote/82 : UInt = upvote/317}
+                        continue; } } }
+                  case Voters_downvote0_90 as data_id/219 : Tuple()/True: {
+                    let v220 : Null;
+                    do(Just v220 : Null) {
+                      v220 : Null = null;
+                      exit(); };
+                    const v216 : Null* = null;
+                    let v223 : UInt;
+                    do(Just v223 : UInt) {
+                      switch (data_id/214 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()}) { local}) {
+                        case Voters_contribute0_90 as data_id/224 : Tuple(UInt)/True: {
+                          const payment/226 : UInt* = .api78.dom/224[0];
+                          const v228 : Bool* = amt/226 > 0;
+                          let v229 : Null;
+                          do(Just v229 : Null) {
+                            const eff = claim(CT_Require)(v228, Just "Contribution too small");
+                            v229 : Null = null;
+                            exit(); };
+                          v223 : UInt = payment/226;
+                          exit(); }
+                        case Voters_downvote0_90 as data_id/244 : Tuple()/True: {
+                          v223 : UInt = 0;
+                          exit(); }
+                        case Voters_upvote0_90 as data_id/246 : Tuple()/True: {
+                          v223 : UInt = 0;
+                          exit(); } }
+                      exit(); };
+                    netBalance/248 : UInt <- fluid netBalance
+                    const v249 : UInt* = netBalance/248 + v223;
+                    fluid netBalance := v249
+                    const eff = checkPay(v223, None);
+                    fluid thisConsensusTime := thisConsensusTime/250
+                    fluid thisConsensusSecs := thisConsensusSecs/251
+                    fluid didPublish := didPublish/252
+                    switch (.fork90.msg/214 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})) {
+                      case Voters_contribute0_90 as .fork90.msg/253 : Tuple(UInt)/True: {
+                        const eff = setApiDetails("Voters_contribute", [Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})], Some Voters_contribute0_90, AIC_Case );
+                        const amt/255 : UInt* = .api78.dom/253[0];
+                        const v256 : Bool* = amt/255 > 0;
+                        let v257 : Null;
+                        do(Just v257 : Null) {
+                          const eff = claim(CT_Require)(v256, Just "Contribution too small");
+                          v257 : Null = null;
+                          exit(); };
+                        const _/272 : UInt* = .api78.dom/253[0];
+                        netBalance/273 : UInt <- fluid netBalance
+                        const .api78.rngl/275 : UInt* = emitLog(api("Voters_contribute"))(.api78.rng/273 );
+                        only("Voters_contribute") {
+                          const v277 : Address* = selfAddress("Voters_contribute", True, 276 )();
+                          let v278 : Null;
+                          do(Just v278 : Null) {
+                            didPublish/279 : Bool <- fluid didPublish
+                            local(Just v278 : Null) if didPublish/279 then {
+                              const v280 : UInt* = .api78.dom/253[0];
+                              const eff = protect<Null>("Voters_contribute".interact.out(.api78.dom/253, .api78.rngl/275 ));
+                              exit(); }
+                            else {
+                              exit(); };
+                            v278 : Null = null;
+                            exit(); };
+                          exit(); };
+                        const v274 : Null* = null;
+                        const m/282 : Data({"None": Null, "Some": Null})* = map2[v/213];
+                        const v284 : UInt* = dataTag(m/282);
+                        const v285 : Bool* = v284 == 1;
+                        if v285 then {
+                          const v/286 : Data({"None": Null, "Some": UInt})* = map1[this/213];
+                          let v288 : UInt;
+                          do(Just v288 : UInt) {
+                            switch (v/286 : Data({"None": Null, "Some": UInt}) { local}) {
+                              case None as v/289 : Null/True: {
+                                v288 : UInt = 0;
+                                exit(); }
+                              case Some as v/291 : UInt/True: {
+                                v288 : UInt = x/291;
+                                exit(); } }
+                            exit(); };
+                          const v293 : UInt* = v288 + amt/255;
+                          const eff = map1[this/213] = v293;
+                          const amtTotal/295 : UInt* = amtTotal/80 + amt/255;
+                          const v296 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/81, amtTotal/295 ];
+                          {
+                            amtTotal/80 : UInt = amtTotal/295,
+                            downvote/81 : UInt = downvote/81,
+                            upvote/82 : UInt = upvote/82}
+                          continue; }
+                        else {
+                          const eff = map0[this/213] = this/213;
+                          const eff = map1[this/213] = amt/255;
+                          const eff = map2[v/213] = null;
+                          const v294 : Null* = null;
+                          const amtTotal/295 : UInt* = amtTotal/80 + amt/255;
+                          const v296 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/81, amtTotal/295 ];
+                          {
+                            amtTotal/80 : UInt = amtTotal/295,
+                            downvote/81 : UInt = downvote/81,
+                            upvote/82 : UInt = upvote/82}
+                          continue; }; }
+                      case Voters_downvote0_90 as .fork90.msg/297 : Tuple()/True: {
+                        const eff = setApiDetails("Voters_downvote", [Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})], Some Voters_downvote0_90, AIC_Case );
+                        const .api77.rng/299 : UInt* = downvote/81 + 1;
+                        const .api77.rngl/301 : UInt* = emitLog(api("Voters_downvote"))(.api77.rng/299 );
+                        only("Voters_downvote") {
+                          const v303 : Address* = selfAddress("Voters_downvote", True, 302 )();
+                          let v304 : Null;
+                          do(Just v304 : Null) {
+                            didPublish/305 : Bool <- fluid didPublish
+                            local(Just v304 : Null) if didPublish/305 then {
+                              const eff = protect<Null>("Voters_downvote".interact.out(.api77.dom/297, .api77.rngl/301 ));
+                              exit(); }
+                            else {
+                              exit(); };
+                            v304 : Null = null;
+                            exit(); };
+                          exit(); };
+                        const v300 : Null* = null;
+                        const downvote/306 : UInt* = downvote/81 + 1;
+                        const v307 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/306, amtTotal/80 ];
+                        {
+                          amtTotal/80 : UInt = amtTotal/80,
+                          downvote/81 : UInt = downvote/306,
+                          upvote/82 : UInt = upvote/82}
+                        continue; }
+                      case Voters_upvote0_90 as .fork90.msg/308 : Tuple()/True: {
+                        const eff = setApiDetails("Voters_upvote", [Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})], Some Voters_upvote0_90, AIC_Case );
+                        const .api76.rng/310 : UInt* = upvote/82 + 1;
+                        const .api76.rngl/312 : UInt* = emitLog(api("Voters_upvote"))(.api76.rng/310 );
+                        only("Voters_upvote") {
+                          const v314 : Address* = selfAddress("Voters_upvote", True, 313 )();
+                          let v315 : Null;
+                          do(Just v315 : Null) {
+                            didPublish/316 : Bool <- fluid didPublish
+                            local(Just v315 : Null) if didPublish/316 then {
+                              const eff = protect<Null>("Voters_upvote".interact.out(.api76.dom/308, .api76.rngl/312 ));
+                              exit(); }
+                            else {
+                              exit(); };
+                            v315 : Null = null;
+                            exit(); };
+                          exit(); };
+                        const v311 : Null* = null;
+                        const upvote/317 : UInt* = upvote/82 + 1;
+                        const v318 : Tuple(UInt, UInt, UInt)* = [upvote/317, downvote/81, amtTotal/80 ];
+                        {
+                          amtTotal/80 : UInt = amtTotal/80,
+                          downvote/81 : UInt = downvote/81,
+                          upvote/82 : UInt = upvote/317}
+                        continue; } } }
+                  case Voters_upvote0_90 as data_id/221 : Tuple()/True: {
+                    let v222 : Null;
+                    do(Just v222 : Null) {
+                      v222 : Null = null;
+                      exit(); };
+                    const v216 : Null* = null;
+                    let v223 : UInt;
+                    do(Just v223 : UInt) {
+                      switch (data_id/214 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()}) { local}) {
+                        case Voters_contribute0_90 as data_id/224 : Tuple(UInt)/True: {
+                          const payment/226 : UInt* = .api78.dom/224[0];
+                          const v228 : Bool* = amt/226 > 0;
+                          let v229 : Null;
+                          do(Just v229 : Null) {
+                            const eff = claim(CT_Require)(v228, Just "Contribution too small");
+                            v229 : Null = null;
+                            exit(); };
+                          v223 : UInt = payment/226;
+                          exit(); }
+                        case Voters_downvote0_90 as data_id/244 : Tuple()/True: {
+                          v223 : UInt = 0;
+                          exit(); }
+                        case Voters_upvote0_90 as data_id/246 : Tuple()/True: {
+                          v223 : UInt = 0;
+                          exit(); } }
+                      exit(); };
+                    netBalance/248 : UInt <- fluid netBalance
+                    const v249 : UInt* = netBalance/248 + v223;
+                    fluid netBalance := v249
+                    const eff = checkPay(v223, None);
+                    fluid thisConsensusTime := thisConsensusTime/250
+                    fluid thisConsensusSecs := thisConsensusSecs/251
+                    fluid didPublish := didPublish/252
+                    switch (.fork90.msg/214 : Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})) {
+                      case Voters_contribute0_90 as .fork90.msg/253 : Tuple(UInt)/True: {
+                        const eff = setApiDetails("Voters_contribute", [Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})], Some Voters_contribute0_90, AIC_Case );
+                        const amt/255 : UInt* = .api78.dom/253[0];
+                        const v256 : Bool* = amt/255 > 0;
+                        let v257 : Null;
+                        do(Just v257 : Null) {
+                          const eff = claim(CT_Require)(v256, Just "Contribution too small");
+                          v257 : Null = null;
+                          exit(); };
+                        const _/272 : UInt* = .api78.dom/253[0];
+                        netBalance/273 : UInt <- fluid netBalance
+                        const .api78.rngl/275 : UInt* = emitLog(api("Voters_contribute"))(.api78.rng/273 );
+                        only("Voters_contribute") {
+                          const v277 : Address* = selfAddress("Voters_contribute", True, 276 )();
+                          let v278 : Null;
+                          do(Just v278 : Null) {
+                            didPublish/279 : Bool <- fluid didPublish
+                            local(Just v278 : Null) if didPublish/279 then {
+                              const v280 : UInt* = .api78.dom/253[0];
+                              const eff = protect<Null>("Voters_contribute".interact.out(.api78.dom/253, .api78.rngl/275 ));
+                              exit(); }
+                            else {
+                              exit(); };
+                            v278 : Null = null;
+                            exit(); };
+                          exit(); };
+                        const v274 : Null* = null;
+                        const m/282 : Data({"None": Null, "Some": Null})* = map2[v/213];
+                        const v284 : UInt* = dataTag(m/282);
+                        const v285 : Bool* = v284 == 1;
+                        if v285 then {
+                          const v/286 : Data({"None": Null, "Some": UInt})* = map1[this/213];
+                          let v288 : UInt;
+                          do(Just v288 : UInt) {
+                            switch (v/286 : Data({"None": Null, "Some": UInt}) { local}) {
+                              case None as v/289 : Null/True: {
+                                v288 : UInt = 0;
+                                exit(); }
+                              case Some as v/291 : UInt/True: {
+                                v288 : UInt = x/291;
+                                exit(); } }
+                            exit(); };
+                          const v293 : UInt* = v288 + amt/255;
+                          const eff = map1[this/213] = v293;
+                          const amtTotal/295 : UInt* = amtTotal/80 + amt/255;
+                          const v296 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/81, amtTotal/295 ];
+                          {
+                            amtTotal/80 : UInt = amtTotal/295,
+                            downvote/81 : UInt = downvote/81,
+                            upvote/82 : UInt = upvote/82}
+                          continue; }
+                        else {
+                          const eff = map0[this/213] = this/213;
+                          const eff = map1[this/213] = amt/255;
+                          const eff = map2[v/213] = null;
+                          const v294 : Null* = null;
+                          const amtTotal/295 : UInt* = amtTotal/80 + amt/255;
+                          const v296 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/81, amtTotal/295 ];
+                          {
+                            amtTotal/80 : UInt = amtTotal/295,
+                            downvote/81 : UInt = downvote/81,
+                            upvote/82 : UInt = upvote/82}
+                          continue; }; }
+                      case Voters_downvote0_90 as .fork90.msg/297 : Tuple()/True: {
+                        const eff = setApiDetails("Voters_downvote", [Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})], Some Voters_downvote0_90, AIC_Case );
+                        const .api77.rng/299 : UInt* = downvote/81 + 1;
+                        const .api77.rngl/301 : UInt* = emitLog(api("Voters_downvote"))(.api77.rng/299 );
+                        only("Voters_downvote") {
+                          const v303 : Address* = selfAddress("Voters_downvote", True, 302 )();
+                          let v304 : Null;
+                          do(Just v304 : Null) {
+                            didPublish/305 : Bool <- fluid didPublish
+                            local(Just v304 : Null) if didPublish/305 then {
+                              const eff = protect<Null>("Voters_downvote".interact.out(.api77.dom/297, .api77.rngl/301 ));
+                              exit(); }
+                            else {
+                              exit(); };
+                            v304 : Null = null;
+                            exit(); };
+                          exit(); };
+                        const v300 : Null* = null;
+                        const downvote/306 : UInt* = downvote/81 + 1;
+                        const v307 : Tuple(UInt, UInt, UInt)* = [upvote/82, downvote/306, amtTotal/80 ];
+                        {
+                          amtTotal/80 : UInt = amtTotal/80,
+                          downvote/81 : UInt = downvote/306,
+                          upvote/82 : UInt = upvote/82}
+                        continue; }
+                      case Voters_upvote0_90 as .fork90.msg/308 : Tuple()/True: {
+                        const eff = setApiDetails("Voters_upvote", [Data({"Voters_contribute0_90": Tuple(UInt), "Voters_downvote0_90": Tuple(), "Voters_upvote0_90": Tuple()})], Some Voters_upvote0_90, AIC_Case );
+                        const .api76.rng/310 : UInt* = upvote/82 + 1;
+                        const .api76.rngl/312 : UInt* = emitLog(api("Voters_upvote"))(.api76.rng/310 );
+                        only("Voters_upvote") {
+                          const v314 : Address* = selfAddress("Voters_upvote", True, 313 )();
+                          let v315 : Null;
+                          do(Just v315 : Null) {
+                            didPublish/316 : Bool <- fluid didPublish
+                            local(Just v315 : Null) if didPublish/316 then {
+                              const eff = protect<Null>("Voters_upvote".interact.out(.api76.dom/308, .api76.rngl/312 ));
+                              exit(); }
+                            else {
+                              exit(); };
+                            v315 : Null = null;
+                            exit(); };
+                          exit(); };
+                        const v311 : Null* = null;
+                        const upvote/317 : UInt* = upvote/82 + 1;
+                        const v318 : Tuple(UInt, UInt, UInt)* = [upvote/317, downvote/81, amtTotal/80 ];
+                        {
+                          amtTotal/80 : UInt = amtTotal/80,
+                          downvote/81 : UInt = downvote/81,
+                          upvote/82 : UInt = upvote/317}
+                        continue; } } } } }
+               }
+          netBalance/437 : UInt <- fluid netBalance
+          netBalance/438 : UInt <- fluid netBalance
+          const v439 : Bool* = netBalance/437 <= netBalance/438;
+          const eff = claim(CT_Assert)(v439, Just "balance sufficient for transfer");
+          netBalance/440 : UInt <- fluid netBalance
+          const v441 : UInt* = netBalance/440 - netBalance/437;
+          fluid netBalance := v441
+          const eff = transfer.(netBalance/437, None).to(Deployer/53);
+          liftBoundary();
+          netBalance/785 : UInt <- fluid netBalance
+          const v786 : Bool* = 0 == netBalance/785;
+          const eff = claim(CT_Assert)(v786, Just "balance zero at application exit");
+          commit();
+          exit(); }
+         }
+    else {
+      loopvar {
+        keepGoing/449 : Bool = true};
+      invariant{
+        [invariant(netBalance/451 : UInt <- fluid netBalance
+        const v452 : Bool* = netBalance/451 == 0;
+        exit();
+        return v452;, Nothing)] }
+      while{
+        exit();
+        return keepGoing/449; }
+      {
+        liftBoundary();
+        commit();
+        only("Voters_created") {
+          const v526 : Address* = selfAddress("Voters_created", True, 525 )();
+          let v527 : Null;
+          do(Just v527 : Null) {
+            const _/530 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))* = protect<Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))>("Voters_created".interact.in());
+            const v531 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = _/530[0];
+            const v532 : UInt* = v531.id;
+            const v533 : Bytes(25)* = v531.title;
+            const v534 : Bytes(150)* = v531.link;
+            const v535 : Bytes(180)* = v531.description;
+            const v536 : Address* = v531.owner;
+            const v537 : Contract* = v531.contractInfo;
+            const v538 : UInt* = v531.blockCreated;
+            const v539 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/530[0];
+            let v540 : Null;
+            do(Just v540 : Null) {
+              v540 : Null = null;
+              exit(); };
+            const v542 : Object({"msg": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))})* = {
+              msg = .api443.dom/530};
+            const v543 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = msg/530[0];
+            const v544 : UInt* = v543.id;
+            const v545 : Bytes(25)* = v543.title;
+            const v546 : Bytes(150)* = v543.link;
+            const v547 : Bytes(180)* = v543.description;
+            const v548 : Address* = v543.owner;
+            const v549 : Contract* = v543.contractInfo;
+            const v550 : UInt* = v543.blockCreated;
+            const v551 : Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null})* = <Voters_created0_455 null>;
+            const v552 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_created0_454 msg/530>;
+            const v553 : Object({"_local": Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null}), "msg": Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}), "when": Bool})* = {
+              _local = v551,
+              msg = v552,
+              when = true};
+            v527 : Null = null;
+            exit(); };
+          exit(); };
+        only("Voters_upvoted") {
+          const v555 : Address* = selfAddress("Voters_upvoted", True, 554 )();
+          let v556 : Null;
+          do(Just v556 : Null) {
+            const _/559 : Tuple(UInt, UInt)* = protect<Tuple(UInt, UInt)>("Voters_upvoted".interact.in());
+            const v560 : UInt* = _/559[0];
+            const v561 : UInt* = _/559[1];
+            const v562 : UInt* = .api444.dom/559[0];
+            const v563 : UInt* = .api444.dom/559[1];
+            let v564 : Null;
+            do(Just v564 : Null) {
+              v564 : Null = null;
+              exit(); };
+            const v566 : Object({"msg": Tuple(UInt, UInt)})* = {
+              msg = .api444.dom/559};
+            const v567 : UInt* = msg/559[0];
+            const v568 : UInt* = msg/559[1];
+            const v569 : Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null})* = <Voters_upvoted0_455 null>;
+            const v570 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_upvoted0_454 msg/559>;
+            const v571 : Object({"_local": Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null}), "msg": Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}), "when": Bool})* = {
+              _local = v569,
+              msg = v570,
+              when = true};
+            v556 : Null = null;
+            exit(); };
+          exit(); };
+        only("Voters_downvoted") {
+          const v573 : Address* = selfAddress("Voters_downvoted", True, 572 )();
+          let v574 : Null;
+          do(Just v574 : Null) {
+            const _/577 : Tuple(UInt, UInt)* = protect<Tuple(UInt, UInt)>("Voters_downvoted".interact.in());
+            const v578 : UInt* = _/577[0];
+            const v579 : UInt* = _/577[1];
+            const v580 : UInt* = .api445.dom/577[0];
+            const v581 : UInt* = .api445.dom/577[1];
+            let v582 : Null;
+            do(Just v582 : Null) {
+              v582 : Null = null;
+              exit(); };
+            const v584 : Object({"msg": Tuple(UInt, UInt)})* = {
+              msg = .api445.dom/577};
+            const v585 : UInt* = msg/577[0];
+            const v586 : UInt* = msg/577[1];
+            const v587 : Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null})* = <Voters_downvoted0_455 null>;
+            const v588 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_downvoted0_454 msg/577>;
+            const v589 : Object({"_local": Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null}), "msg": Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}), "when": Bool})* = {
+              _local = v587,
+              msg = v588,
+              when = true};
+            v574 : Null = null;
+            exit(); };
+          exit(); };
+        only("Voters_contributed") {
+          const v591 : Address* = selfAddress("Voters_contributed", True, 590 )();
+          let v592 : Null;
+          do(Just v592 : Null) {
+            const _/595 : Tuple(UInt, UInt)* = protect<Tuple(UInt, UInt)>("Voters_contributed".interact.in());
+            const v596 : UInt* = _/595[0];
+            const v597 : UInt* = _/595[1];
+            const v598 : UInt* = .api446.dom/595[0];
+            const v599 : UInt* = .api446.dom/595[1];
+            let v600 : Null;
+            do(Just v600 : Null) {
+              v600 : Null = null;
+              exit(); };
+            const v602 : Object({"msg": Tuple(UInt, UInt)})* = {
+              msg = .api446.dom/595};
+            const v603 : UInt* = msg/595[0];
+            const v604 : UInt* = msg/595[1];
+            const v605 : Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null})* = <Voters_contributed0_455 null>;
+            const v606 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_contributed0_454 msg/595>;
+            const v607 : Object({"_local": Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null}), "msg": Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}), "when": Bool})* = {
+              _local = v605,
+              msg = v606,
+              when = true};
+            v592 : Null = null;
+            exit(); };
+          exit(); };
+        only("Voters_timedOut") {
+          const v609 : Address* = selfAddress("Voters_timedOut", True, 608 )();
+          let v610 : Null;
+          do(Just v610 : Null) {
+            const _/613 : Tuple(UInt, UInt)* = protect<Tuple(UInt, UInt)>("Voters_timedOut".interact.in());
+            const v614 : UInt* = _/613[0];
+            const v615 : UInt* = _/613[1];
+            const v616 : UInt* = .api447.dom/613[0];
+            const v617 : UInt* = .api447.dom/613[1];
+            let v618 : Null;
+            do(Just v618 : Null) {
+              v618 : Null = null;
+              exit(); };
+            const v620 : Object({"msg": Tuple(UInt, UInt)})* = {
+              msg = .api447.dom/613};
+            const v621 : UInt* = msg/613[0];
+            const v622 : UInt* = msg/613[1];
+            const v623 : Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null})* = <Voters_timedOut0_455 null>;
+            const v624 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_timedOut0_454 msg/613>;
+            const v625 : Object({"_local": Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null}), "msg": Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}), "when": Bool})* = {
+              _local = v623,
+              msg = v624,
+              when = true};
+            v610 : Null = null;
+            exit(); };
+          exit(); };
+        only("Voters_projectDown") {
+          const v627 : Address* = selfAddress("Voters_projectDown", True, 626 )();
+          let v628 : Null;
+          do(Just v628 : Null) {
+            const _/631 : Tuple(UInt)* = protect<Tuple(UInt)>("Voters_projectDown".interact.in());
+            const v632 : UInt* = _/631[0];
+            const v633 : UInt* = .api448.dom/631[0];
+            let v634 : Null;
+            do(Just v634 : Null) {
+              v634 : Null = null;
+              exit(); };
+            const v636 : Object({"msg": Tuple(UInt)})* = {
+              msg = .api448.dom/631};
+            const v637 : UInt* = msg/631[0];
+            const v638 : Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null})* = <Voters_projectDown0_455 null>;
+            const v639 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_projectDown0_454 msg/631>;
+            const v640 : Object({"_local": Data({"Voters_contributed0_455": Null, "Voters_created0_455": Null, "Voters_downvoted0_455": Null, "Voters_projectDown0_455": Null, "Voters_timedOut0_455": Null, "Voters_upvoted0_455": Null}), "msg": Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}), "when": Bool})* = {
+              _local = v638,
+              msg = v639,
+              when = true};
+            v628 : Null = null;
+            exit(); };
+          exit(); };
+        only("Voters_contributed") {
+          const v641 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_contributed0_454 msg/595>;
+          exit(); };
+        only("Voters_created") {
+          const v644 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_created0_454 msg/530>;
+          exit(); };
+        only("Voters_downvoted") {
+          const v647 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_downvoted0_454 msg/577>;
+          exit(); };
+        only("Voters_projectDown") {
+          const v650 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_projectDown0_454 msg/631>;
+          exit(); };
+        only("Voters_timedOut") {
+          const v653 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_timedOut0_454 msg/613>;
+          exit(); };
+        only("Voters_upvoted") {
+          const v656 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})* = <Voters_upvoted0_454 msg/559>;
+          exit(); };
+        publish(@?)
+          .case("Voters_contributed").send({
+            isClass = True,
+            msg = [v641],
+            pay = [0, ],
+            when = true})
+          .case("Voters_created").send({
+            isClass = True,
+            msg = [v644],
+            pay = [0, ],
+            when = true})
+          .case("Voters_downvoted").send({
+            isClass = True,
+            msg = [v647],
+            pay = [0, ],
+            when = true})
+          .case("Voters_projectDown").send({
+            isClass = True,
+            msg = [v650],
+            pay = [0, ],
+            when = true})
+          .case("Voters_timedOut").send({
+            isClass = True,
+            msg = [v653],
+            pay = [0, ],
+            when = true})
+          .case("Voters_upvoted").send({
+            isClass = True,
+            msg = [v656],
+            pay = [0, ],
+            when = true})
+          .recv({
+            didSend = didPublish/690 : Bool,
+            from = v659 : Address,
+            msg = [.fork454.msg/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})],
+            secs = thisConsensusSecs/689 : UInt,
+            time = thisConsensusTime/688 : UInt}){
+            switch (data_id/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})) {
+              case Voters_contributed0_454 as data_id/663 : Tuple(UInt, UInt)/True: {
+                let v664 : Null;
+                do(Just v664 : Null) {
+                  v664 : Null = null;
+                  exit(); };
+                const v662 : Null* = null;
+                let v675 : UInt;
+                do(Just v675 : UInt) {
+                  switch (data_id/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}) { local}) {
+                    case Voters_contributed0_454 as data_id/676 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_created0_454 as data_id/678 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_downvoted0_454 as data_id/680 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_projectDown0_454 as data_id/682 : Tuple(UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_timedOut0_454 as data_id/684 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_upvoted0_454 as data_id/686 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); } }
+                  exit(); };
+                const eff = checkPay(0, None);
+                fluid thisConsensusTime := thisConsensusTime/688
+                fluid thisConsensusSecs := thisConsensusSecs/689
+                fluid didPublish := didPublish/690
+                switch (.fork454.msg/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})) {
+                  case Voters_contributed0_454 as .fork454.msg/691 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_contributed", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_contributed0_454, AIC_Case );
+                    const num1/693 : UInt* = .api446.dom/691[0];
+                    const num2/694 : UInt* = .api446.dom/691[1];
+                    const v696 : Null* = null;
+                    const .api446.rngl/697 : Null* = emitLog(api("Voters_contributed"))(v696 );
+                    only("Voters_contributed") {
+                      const v699 : Address* = selfAddress("Voters_contributed", True, 698 )();
+                      let v700 : Null;
+                      do(Just v700 : Null) {
+                        didPublish/701 : Bool <- fluid didPublish
+                        local(Just v700 : Null) if didPublish/701 then {
+                          const v702 : UInt* = .api446.dom/691[0];
+                          const v703 : UInt* = .api446.dom/691[1];
+                          const eff = protect<Null>("Voters_contributed".interact.out(.api446.dom/691, .api446.rngl/697 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v700 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v695 : Null* = null;
+                    const v704 : Bytes(20)* = "contributed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v704, num1/693, num2/694 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_created0_454 as .fork454.msg/705 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                    const eff = setApiDetails("Voters_created", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_created0_454, AIC_Case );
+                    const obj/707 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                    const v709 : Null* = null;
+                    const .api443.rngl/710 : Null* = emitLog(api("Voters_created"))(v709 );
+                    only("Voters_created") {
+                      const v712 : Address* = selfAddress("Voters_created", True, 711 )();
+                      let v713 : Null;
+                      do(Just v713 : Null) {
+                        didPublish/714 : Bool <- fluid didPublish
+                        local(Just v713 : Null) if didPublish/714 then {
+                          const v715 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                          const v716 : UInt* = v715.id;
+                          const v717 : Bytes(25)* = v715.title;
+                          const v718 : Bytes(150)* = v715.link;
+                          const v719 : Bytes(180)* = v715.description;
+                          const v720 : Address* = v715.owner;
+                          const v721 : Contract* = v715.contractInfo;
+                          const v722 : UInt* = v715.blockCreated;
+                          const eff = protect<Null>("Voters_created".interact.out(.api443.dom/705, .api443.rngl/710 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v713 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v708 : Null* = null;
+                    const v723 : UInt* = obj/707.id;
+                    const v724 : Bytes(25)* = obj/707.title;
+                    const v725 : Bytes(150)* = obj/707.link;
+                    const v726 : Bytes(180)* = obj/707.description;
+                    const v727 : Address* = obj/707.owner;
+                    const v728 : Contract* = obj/707.contractInfo;
+                    const v729 : UInt* = obj/707.blockCreated;
+                    const eff = emitLog(event(Nothing, create))(v723, v724, v725, v726, v727, v728, v729 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_downvoted0_454 as .fork454.msg/730 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_downvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_downvoted0_454, AIC_Case );
+                    const num1/732 : UInt* = .api445.dom/730[0];
+                    const num2/733 : UInt* = .api445.dom/730[1];
+                    const v735 : Null* = null;
+                    const .api445.rngl/736 : Null* = emitLog(api("Voters_downvoted"))(v735 );
+                    only("Voters_downvoted") {
+                      const v738 : Address* = selfAddress("Voters_downvoted", True, 737 )();
+                      let v739 : Null;
+                      do(Just v739 : Null) {
+                        didPublish/740 : Bool <- fluid didPublish
+                        local(Just v739 : Null) if didPublish/740 then {
+                          const v741 : UInt* = .api445.dom/730[0];
+                          const v742 : UInt* = .api445.dom/730[1];
+                          const eff = protect<Null>("Voters_downvoted".interact.out(.api445.dom/730, .api445.rngl/736 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v739 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v734 : Null* = null;
+                    const v743 : Bytes(20)* = "downvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v743, num1/732, num2/733 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_projectDown0_454 as .fork454.msg/744 : Tuple(UInt)/True: {
+                    const eff = setApiDetails("Voters_projectDown", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_projectDown0_454, AIC_Case );
+                    const num1/746 : UInt* = .api448.dom/744[0];
+                    const v748 : Null* = null;
+                    const .api448.rngl/749 : Null* = emitLog(api("Voters_projectDown"))(v748 );
+                    only("Voters_projectDown") {
+                      const v751 : Address* = selfAddress("Voters_projectDown", True, 750 )();
+                      let v752 : Null;
+                      do(Just v752 : Null) {
+                        didPublish/753 : Bool <- fluid didPublish
+                        local(Just v752 : Null) if didPublish/753 then {
+                          const v754 : UInt* = .api448.dom/744[0];
+                          const eff = protect<Null>("Voters_projectDown".interact.out(.api448.dom/744, .api448.rngl/749 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v752 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v747 : Null* = null;
+                    const v755 : Bytes(20)* = "projectDown\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const v756 : UInt* = 0;
+                    const eff = emitLog(event(Nothing, that))(v755, num1/746, v756 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_timedOut0_454 as .fork454.msg/757 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_timedOut", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_timedOut0_454, AIC_Case );
+                    const num1/759 : UInt* = .api447.dom/757[0];
+                    const num2/760 : UInt* = .api447.dom/757[1];
+                    const v762 : Null* = null;
+                    const .api447.rngl/763 : Null* = emitLog(api("Voters_timedOut"))(v762 );
+                    only("Voters_timedOut") {
+                      const v765 : Address* = selfAddress("Voters_timedOut", True, 764 )();
+                      let v766 : Null;
+                      do(Just v766 : Null) {
+                        didPublish/767 : Bool <- fluid didPublish
+                        local(Just v766 : Null) if didPublish/767 then {
+                          const v768 : UInt* = .api447.dom/757[0];
+                          const v769 : UInt* = .api447.dom/757[1];
+                          const eff = protect<Null>("Voters_timedOut".interact.out(.api447.dom/757, .api447.rngl/763 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v766 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v761 : Null* = null;
+                    const v770 : Bytes(20)* = "timedOut\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v770, num1/759, num2/760 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_upvoted0_454 as .fork454.msg/771 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_upvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_upvoted0_454, AIC_Case );
+                    const num1/773 : UInt* = .api444.dom/771[0];
+                    const num2/774 : UInt* = .api444.dom/771[1];
+                    const v776 : Null* = null;
+                    const .api444.rngl/777 : Null* = emitLog(api("Voters_upvoted"))(v776 );
+                    only("Voters_upvoted") {
+                      const v779 : Address* = selfAddress("Voters_upvoted", True, 778 )();
+                      let v780 : Null;
+                      do(Just v780 : Null) {
+                        didPublish/781 : Bool <- fluid didPublish
+                        local(Just v780 : Null) if didPublish/781 then {
+                          const v782 : UInt* = .api444.dom/771[0];
+                          const v783 : UInt* = .api444.dom/771[1];
+                          const eff = protect<Null>("Voters_upvoted".interact.out(.api444.dom/771, .api444.rngl/777 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v780 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v775 : Null* = null;
+                    const v784 : Bytes(20)* = "upvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v784, num1/773, num2/774 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; } } }
+              case Voters_created0_454 as data_id/665 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                let v666 : Null;
+                do(Just v666 : Null) {
+                  v666 : Null = null;
+                  exit(); };
+                const v662 : Null* = null;
+                let v675 : UInt;
+                do(Just v675 : UInt) {
+                  switch (data_id/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}) { local}) {
+                    case Voters_contributed0_454 as data_id/676 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_created0_454 as data_id/678 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_downvoted0_454 as data_id/680 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_projectDown0_454 as data_id/682 : Tuple(UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_timedOut0_454 as data_id/684 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_upvoted0_454 as data_id/686 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); } }
+                  exit(); };
+                const eff = checkPay(0, None);
+                fluid thisConsensusTime := thisConsensusTime/688
+                fluid thisConsensusSecs := thisConsensusSecs/689
+                fluid didPublish := didPublish/690
+                switch (.fork454.msg/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})) {
+                  case Voters_contributed0_454 as .fork454.msg/691 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_contributed", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_contributed0_454, AIC_Case );
+                    const num1/693 : UInt* = .api446.dom/691[0];
+                    const num2/694 : UInt* = .api446.dom/691[1];
+                    const v696 : Null* = null;
+                    const .api446.rngl/697 : Null* = emitLog(api("Voters_contributed"))(v696 );
+                    only("Voters_contributed") {
+                      const v699 : Address* = selfAddress("Voters_contributed", True, 698 )();
+                      let v700 : Null;
+                      do(Just v700 : Null) {
+                        didPublish/701 : Bool <- fluid didPublish
+                        local(Just v700 : Null) if didPublish/701 then {
+                          const v702 : UInt* = .api446.dom/691[0];
+                          const v703 : UInt* = .api446.dom/691[1];
+                          const eff = protect<Null>("Voters_contributed".interact.out(.api446.dom/691, .api446.rngl/697 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v700 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v695 : Null* = null;
+                    const v704 : Bytes(20)* = "contributed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v704, num1/693, num2/694 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_created0_454 as .fork454.msg/705 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                    const eff = setApiDetails("Voters_created", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_created0_454, AIC_Case );
+                    const obj/707 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                    const v709 : Null* = null;
+                    const .api443.rngl/710 : Null* = emitLog(api("Voters_created"))(v709 );
+                    only("Voters_created") {
+                      const v712 : Address* = selfAddress("Voters_created", True, 711 )();
+                      let v713 : Null;
+                      do(Just v713 : Null) {
+                        didPublish/714 : Bool <- fluid didPublish
+                        local(Just v713 : Null) if didPublish/714 then {
+                          const v715 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                          const v716 : UInt* = v715.id;
+                          const v717 : Bytes(25)* = v715.title;
+                          const v718 : Bytes(150)* = v715.link;
+                          const v719 : Bytes(180)* = v715.description;
+                          const v720 : Address* = v715.owner;
+                          const v721 : Contract* = v715.contractInfo;
+                          const v722 : UInt* = v715.blockCreated;
+                          const eff = protect<Null>("Voters_created".interact.out(.api443.dom/705, .api443.rngl/710 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v713 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v708 : Null* = null;
+                    const v723 : UInt* = obj/707.id;
+                    const v724 : Bytes(25)* = obj/707.title;
+                    const v725 : Bytes(150)* = obj/707.link;
+                    const v726 : Bytes(180)* = obj/707.description;
+                    const v727 : Address* = obj/707.owner;
+                    const v728 : Contract* = obj/707.contractInfo;
+                    const v729 : UInt* = obj/707.blockCreated;
+                    const eff = emitLog(event(Nothing, create))(v723, v724, v725, v726, v727, v728, v729 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_downvoted0_454 as .fork454.msg/730 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_downvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_downvoted0_454, AIC_Case );
+                    const num1/732 : UInt* = .api445.dom/730[0];
+                    const num2/733 : UInt* = .api445.dom/730[1];
+                    const v735 : Null* = null;
+                    const .api445.rngl/736 : Null* = emitLog(api("Voters_downvoted"))(v735 );
+                    only("Voters_downvoted") {
+                      const v738 : Address* = selfAddress("Voters_downvoted", True, 737 )();
+                      let v739 : Null;
+                      do(Just v739 : Null) {
+                        didPublish/740 : Bool <- fluid didPublish
+                        local(Just v739 : Null) if didPublish/740 then {
+                          const v741 : UInt* = .api445.dom/730[0];
+                          const v742 : UInt* = .api445.dom/730[1];
+                          const eff = protect<Null>("Voters_downvoted".interact.out(.api445.dom/730, .api445.rngl/736 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v739 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v734 : Null* = null;
+                    const v743 : Bytes(20)* = "downvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v743, num1/732, num2/733 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_projectDown0_454 as .fork454.msg/744 : Tuple(UInt)/True: {
+                    const eff = setApiDetails("Voters_projectDown", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_projectDown0_454, AIC_Case );
+                    const num1/746 : UInt* = .api448.dom/744[0];
+                    const v748 : Null* = null;
+                    const .api448.rngl/749 : Null* = emitLog(api("Voters_projectDown"))(v748 );
+                    only("Voters_projectDown") {
+                      const v751 : Address* = selfAddress("Voters_projectDown", True, 750 )();
+                      let v752 : Null;
+                      do(Just v752 : Null) {
+                        didPublish/753 : Bool <- fluid didPublish
+                        local(Just v752 : Null) if didPublish/753 then {
+                          const v754 : UInt* = .api448.dom/744[0];
+                          const eff = protect<Null>("Voters_projectDown".interact.out(.api448.dom/744, .api448.rngl/749 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v752 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v747 : Null* = null;
+                    const v755 : Bytes(20)* = "projectDown\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const v756 : UInt* = 0;
+                    const eff = emitLog(event(Nothing, that))(v755, num1/746, v756 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_timedOut0_454 as .fork454.msg/757 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_timedOut", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_timedOut0_454, AIC_Case );
+                    const num1/759 : UInt* = .api447.dom/757[0];
+                    const num2/760 : UInt* = .api447.dom/757[1];
+                    const v762 : Null* = null;
+                    const .api447.rngl/763 : Null* = emitLog(api("Voters_timedOut"))(v762 );
+                    only("Voters_timedOut") {
+                      const v765 : Address* = selfAddress("Voters_timedOut", True, 764 )();
+                      let v766 : Null;
+                      do(Just v766 : Null) {
+                        didPublish/767 : Bool <- fluid didPublish
+                        local(Just v766 : Null) if didPublish/767 then {
+                          const v768 : UInt* = .api447.dom/757[0];
+                          const v769 : UInt* = .api447.dom/757[1];
+                          const eff = protect<Null>("Voters_timedOut".interact.out(.api447.dom/757, .api447.rngl/763 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v766 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v761 : Null* = null;
+                    const v770 : Bytes(20)* = "timedOut\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v770, num1/759, num2/760 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_upvoted0_454 as .fork454.msg/771 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_upvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_upvoted0_454, AIC_Case );
+                    const num1/773 : UInt* = .api444.dom/771[0];
+                    const num2/774 : UInt* = .api444.dom/771[1];
+                    const v776 : Null* = null;
+                    const .api444.rngl/777 : Null* = emitLog(api("Voters_upvoted"))(v776 );
+                    only("Voters_upvoted") {
+                      const v779 : Address* = selfAddress("Voters_upvoted", True, 778 )();
+                      let v780 : Null;
+                      do(Just v780 : Null) {
+                        didPublish/781 : Bool <- fluid didPublish
+                        local(Just v780 : Null) if didPublish/781 then {
+                          const v782 : UInt* = .api444.dom/771[0];
+                          const v783 : UInt* = .api444.dom/771[1];
+                          const eff = protect<Null>("Voters_upvoted".interact.out(.api444.dom/771, .api444.rngl/777 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v780 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v775 : Null* = null;
+                    const v784 : Bytes(20)* = "upvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v784, num1/773, num2/774 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; } } }
+              case Voters_downvoted0_454 as data_id/667 : Tuple(UInt, UInt)/True: {
+                let v668 : Null;
+                do(Just v668 : Null) {
+                  v668 : Null = null;
+                  exit(); };
+                const v662 : Null* = null;
+                let v675 : UInt;
+                do(Just v675 : UInt) {
+                  switch (data_id/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}) { local}) {
+                    case Voters_contributed0_454 as data_id/676 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_created0_454 as data_id/678 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_downvoted0_454 as data_id/680 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_projectDown0_454 as data_id/682 : Tuple(UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_timedOut0_454 as data_id/684 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_upvoted0_454 as data_id/686 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); } }
+                  exit(); };
+                const eff = checkPay(0, None);
+                fluid thisConsensusTime := thisConsensusTime/688
+                fluid thisConsensusSecs := thisConsensusSecs/689
+                fluid didPublish := didPublish/690
+                switch (.fork454.msg/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})) {
+                  case Voters_contributed0_454 as .fork454.msg/691 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_contributed", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_contributed0_454, AIC_Case );
+                    const num1/693 : UInt* = .api446.dom/691[0];
+                    const num2/694 : UInt* = .api446.dom/691[1];
+                    const v696 : Null* = null;
+                    const .api446.rngl/697 : Null* = emitLog(api("Voters_contributed"))(v696 );
+                    only("Voters_contributed") {
+                      const v699 : Address* = selfAddress("Voters_contributed", True, 698 )();
+                      let v700 : Null;
+                      do(Just v700 : Null) {
+                        didPublish/701 : Bool <- fluid didPublish
+                        local(Just v700 : Null) if didPublish/701 then {
+                          const v702 : UInt* = .api446.dom/691[0];
+                          const v703 : UInt* = .api446.dom/691[1];
+                          const eff = protect<Null>("Voters_contributed".interact.out(.api446.dom/691, .api446.rngl/697 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v700 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v695 : Null* = null;
+                    const v704 : Bytes(20)* = "contributed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v704, num1/693, num2/694 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_created0_454 as .fork454.msg/705 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                    const eff = setApiDetails("Voters_created", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_created0_454, AIC_Case );
+                    const obj/707 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                    const v709 : Null* = null;
+                    const .api443.rngl/710 : Null* = emitLog(api("Voters_created"))(v709 );
+                    only("Voters_created") {
+                      const v712 : Address* = selfAddress("Voters_created", True, 711 )();
+                      let v713 : Null;
+                      do(Just v713 : Null) {
+                        didPublish/714 : Bool <- fluid didPublish
+                        local(Just v713 : Null) if didPublish/714 then {
+                          const v715 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                          const v716 : UInt* = v715.id;
+                          const v717 : Bytes(25)* = v715.title;
+                          const v718 : Bytes(150)* = v715.link;
+                          const v719 : Bytes(180)* = v715.description;
+                          const v720 : Address* = v715.owner;
+                          const v721 : Contract* = v715.contractInfo;
+                          const v722 : UInt* = v715.blockCreated;
+                          const eff = protect<Null>("Voters_created".interact.out(.api443.dom/705, .api443.rngl/710 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v713 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v708 : Null* = null;
+                    const v723 : UInt* = obj/707.id;
+                    const v724 : Bytes(25)* = obj/707.title;
+                    const v725 : Bytes(150)* = obj/707.link;
+                    const v726 : Bytes(180)* = obj/707.description;
+                    const v727 : Address* = obj/707.owner;
+                    const v728 : Contract* = obj/707.contractInfo;
+                    const v729 : UInt* = obj/707.blockCreated;
+                    const eff = emitLog(event(Nothing, create))(v723, v724, v725, v726, v727, v728, v729 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_downvoted0_454 as .fork454.msg/730 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_downvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_downvoted0_454, AIC_Case );
+                    const num1/732 : UInt* = .api445.dom/730[0];
+                    const num2/733 : UInt* = .api445.dom/730[1];
+                    const v735 : Null* = null;
+                    const .api445.rngl/736 : Null* = emitLog(api("Voters_downvoted"))(v735 );
+                    only("Voters_downvoted") {
+                      const v738 : Address* = selfAddress("Voters_downvoted", True, 737 )();
+                      let v739 : Null;
+                      do(Just v739 : Null) {
+                        didPublish/740 : Bool <- fluid didPublish
+                        local(Just v739 : Null) if didPublish/740 then {
+                          const v741 : UInt* = .api445.dom/730[0];
+                          const v742 : UInt* = .api445.dom/730[1];
+                          const eff = protect<Null>("Voters_downvoted".interact.out(.api445.dom/730, .api445.rngl/736 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v739 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v734 : Null* = null;
+                    const v743 : Bytes(20)* = "downvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v743, num1/732, num2/733 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_projectDown0_454 as .fork454.msg/744 : Tuple(UInt)/True: {
+                    const eff = setApiDetails("Voters_projectDown", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_projectDown0_454, AIC_Case );
+                    const num1/746 : UInt* = .api448.dom/744[0];
+                    const v748 : Null* = null;
+                    const .api448.rngl/749 : Null* = emitLog(api("Voters_projectDown"))(v748 );
+                    only("Voters_projectDown") {
+                      const v751 : Address* = selfAddress("Voters_projectDown", True, 750 )();
+                      let v752 : Null;
+                      do(Just v752 : Null) {
+                        didPublish/753 : Bool <- fluid didPublish
+                        local(Just v752 : Null) if didPublish/753 then {
+                          const v754 : UInt* = .api448.dom/744[0];
+                          const eff = protect<Null>("Voters_projectDown".interact.out(.api448.dom/744, .api448.rngl/749 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v752 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v747 : Null* = null;
+                    const v755 : Bytes(20)* = "projectDown\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const v756 : UInt* = 0;
+                    const eff = emitLog(event(Nothing, that))(v755, num1/746, v756 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_timedOut0_454 as .fork454.msg/757 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_timedOut", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_timedOut0_454, AIC_Case );
+                    const num1/759 : UInt* = .api447.dom/757[0];
+                    const num2/760 : UInt* = .api447.dom/757[1];
+                    const v762 : Null* = null;
+                    const .api447.rngl/763 : Null* = emitLog(api("Voters_timedOut"))(v762 );
+                    only("Voters_timedOut") {
+                      const v765 : Address* = selfAddress("Voters_timedOut", True, 764 )();
+                      let v766 : Null;
+                      do(Just v766 : Null) {
+                        didPublish/767 : Bool <- fluid didPublish
+                        local(Just v766 : Null) if didPublish/767 then {
+                          const v768 : UInt* = .api447.dom/757[0];
+                          const v769 : UInt* = .api447.dom/757[1];
+                          const eff = protect<Null>("Voters_timedOut".interact.out(.api447.dom/757, .api447.rngl/763 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v766 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v761 : Null* = null;
+                    const v770 : Bytes(20)* = "timedOut\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v770, num1/759, num2/760 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_upvoted0_454 as .fork454.msg/771 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_upvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_upvoted0_454, AIC_Case );
+                    const num1/773 : UInt* = .api444.dom/771[0];
+                    const num2/774 : UInt* = .api444.dom/771[1];
+                    const v776 : Null* = null;
+                    const .api444.rngl/777 : Null* = emitLog(api("Voters_upvoted"))(v776 );
+                    only("Voters_upvoted") {
+                      const v779 : Address* = selfAddress("Voters_upvoted", True, 778 )();
+                      let v780 : Null;
+                      do(Just v780 : Null) {
+                        didPublish/781 : Bool <- fluid didPublish
+                        local(Just v780 : Null) if didPublish/781 then {
+                          const v782 : UInt* = .api444.dom/771[0];
+                          const v783 : UInt* = .api444.dom/771[1];
+                          const eff = protect<Null>("Voters_upvoted".interact.out(.api444.dom/771, .api444.rngl/777 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v780 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v775 : Null* = null;
+                    const v784 : Bytes(20)* = "upvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v784, num1/773, num2/774 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; } } }
+              case Voters_projectDown0_454 as data_id/669 : Tuple(UInt)/True: {
+                let v670 : Null;
+                do(Just v670 : Null) {
+                  v670 : Null = null;
+                  exit(); };
+                const v662 : Null* = null;
+                let v675 : UInt;
+                do(Just v675 : UInt) {
+                  switch (data_id/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}) { local}) {
+                    case Voters_contributed0_454 as data_id/676 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_created0_454 as data_id/678 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_downvoted0_454 as data_id/680 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_projectDown0_454 as data_id/682 : Tuple(UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_timedOut0_454 as data_id/684 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_upvoted0_454 as data_id/686 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); } }
+                  exit(); };
+                const eff = checkPay(0, None);
+                fluid thisConsensusTime := thisConsensusTime/688
+                fluid thisConsensusSecs := thisConsensusSecs/689
+                fluid didPublish := didPublish/690
+                switch (.fork454.msg/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})) {
+                  case Voters_contributed0_454 as .fork454.msg/691 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_contributed", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_contributed0_454, AIC_Case );
+                    const num1/693 : UInt* = .api446.dom/691[0];
+                    const num2/694 : UInt* = .api446.dom/691[1];
+                    const v696 : Null* = null;
+                    const .api446.rngl/697 : Null* = emitLog(api("Voters_contributed"))(v696 );
+                    only("Voters_contributed") {
+                      const v699 : Address* = selfAddress("Voters_contributed", True, 698 )();
+                      let v700 : Null;
+                      do(Just v700 : Null) {
+                        didPublish/701 : Bool <- fluid didPublish
+                        local(Just v700 : Null) if didPublish/701 then {
+                          const v702 : UInt* = .api446.dom/691[0];
+                          const v703 : UInt* = .api446.dom/691[1];
+                          const eff = protect<Null>("Voters_contributed".interact.out(.api446.dom/691, .api446.rngl/697 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v700 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v695 : Null* = null;
+                    const v704 : Bytes(20)* = "contributed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v704, num1/693, num2/694 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_created0_454 as .fork454.msg/705 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                    const eff = setApiDetails("Voters_created", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_created0_454, AIC_Case );
+                    const obj/707 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                    const v709 : Null* = null;
+                    const .api443.rngl/710 : Null* = emitLog(api("Voters_created"))(v709 );
+                    only("Voters_created") {
+                      const v712 : Address* = selfAddress("Voters_created", True, 711 )();
+                      let v713 : Null;
+                      do(Just v713 : Null) {
+                        didPublish/714 : Bool <- fluid didPublish
+                        local(Just v713 : Null) if didPublish/714 then {
+                          const v715 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                          const v716 : UInt* = v715.id;
+                          const v717 : Bytes(25)* = v715.title;
+                          const v718 : Bytes(150)* = v715.link;
+                          const v719 : Bytes(180)* = v715.description;
+                          const v720 : Address* = v715.owner;
+                          const v721 : Contract* = v715.contractInfo;
+                          const v722 : UInt* = v715.blockCreated;
+                          const eff = protect<Null>("Voters_created".interact.out(.api443.dom/705, .api443.rngl/710 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v713 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v708 : Null* = null;
+                    const v723 : UInt* = obj/707.id;
+                    const v724 : Bytes(25)* = obj/707.title;
+                    const v725 : Bytes(150)* = obj/707.link;
+                    const v726 : Bytes(180)* = obj/707.description;
+                    const v727 : Address* = obj/707.owner;
+                    const v728 : Contract* = obj/707.contractInfo;
+                    const v729 : UInt* = obj/707.blockCreated;
+                    const eff = emitLog(event(Nothing, create))(v723, v724, v725, v726, v727, v728, v729 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_downvoted0_454 as .fork454.msg/730 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_downvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_downvoted0_454, AIC_Case );
+                    const num1/732 : UInt* = .api445.dom/730[0];
+                    const num2/733 : UInt* = .api445.dom/730[1];
+                    const v735 : Null* = null;
+                    const .api445.rngl/736 : Null* = emitLog(api("Voters_downvoted"))(v735 );
+                    only("Voters_downvoted") {
+                      const v738 : Address* = selfAddress("Voters_downvoted", True, 737 )();
+                      let v739 : Null;
+                      do(Just v739 : Null) {
+                        didPublish/740 : Bool <- fluid didPublish
+                        local(Just v739 : Null) if didPublish/740 then {
+                          const v741 : UInt* = .api445.dom/730[0];
+                          const v742 : UInt* = .api445.dom/730[1];
+                          const eff = protect<Null>("Voters_downvoted".interact.out(.api445.dom/730, .api445.rngl/736 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v739 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v734 : Null* = null;
+                    const v743 : Bytes(20)* = "downvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v743, num1/732, num2/733 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_projectDown0_454 as .fork454.msg/744 : Tuple(UInt)/True: {
+                    const eff = setApiDetails("Voters_projectDown", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_projectDown0_454, AIC_Case );
+                    const num1/746 : UInt* = .api448.dom/744[0];
+                    const v748 : Null* = null;
+                    const .api448.rngl/749 : Null* = emitLog(api("Voters_projectDown"))(v748 );
+                    only("Voters_projectDown") {
+                      const v751 : Address* = selfAddress("Voters_projectDown", True, 750 )();
+                      let v752 : Null;
+                      do(Just v752 : Null) {
+                        didPublish/753 : Bool <- fluid didPublish
+                        local(Just v752 : Null) if didPublish/753 then {
+                          const v754 : UInt* = .api448.dom/744[0];
+                          const eff = protect<Null>("Voters_projectDown".interact.out(.api448.dom/744, .api448.rngl/749 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v752 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v747 : Null* = null;
+                    const v755 : Bytes(20)* = "projectDown\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const v756 : UInt* = 0;
+                    const eff = emitLog(event(Nothing, that))(v755, num1/746, v756 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_timedOut0_454 as .fork454.msg/757 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_timedOut", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_timedOut0_454, AIC_Case );
+                    const num1/759 : UInt* = .api447.dom/757[0];
+                    const num2/760 : UInt* = .api447.dom/757[1];
+                    const v762 : Null* = null;
+                    const .api447.rngl/763 : Null* = emitLog(api("Voters_timedOut"))(v762 );
+                    only("Voters_timedOut") {
+                      const v765 : Address* = selfAddress("Voters_timedOut", True, 764 )();
+                      let v766 : Null;
+                      do(Just v766 : Null) {
+                        didPublish/767 : Bool <- fluid didPublish
+                        local(Just v766 : Null) if didPublish/767 then {
+                          const v768 : UInt* = .api447.dom/757[0];
+                          const v769 : UInt* = .api447.dom/757[1];
+                          const eff = protect<Null>("Voters_timedOut".interact.out(.api447.dom/757, .api447.rngl/763 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v766 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v761 : Null* = null;
+                    const v770 : Bytes(20)* = "timedOut\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v770, num1/759, num2/760 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_upvoted0_454 as .fork454.msg/771 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_upvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_upvoted0_454, AIC_Case );
+                    const num1/773 : UInt* = .api444.dom/771[0];
+                    const num2/774 : UInt* = .api444.dom/771[1];
+                    const v776 : Null* = null;
+                    const .api444.rngl/777 : Null* = emitLog(api("Voters_upvoted"))(v776 );
+                    only("Voters_upvoted") {
+                      const v779 : Address* = selfAddress("Voters_upvoted", True, 778 )();
+                      let v780 : Null;
+                      do(Just v780 : Null) {
+                        didPublish/781 : Bool <- fluid didPublish
+                        local(Just v780 : Null) if didPublish/781 then {
+                          const v782 : UInt* = .api444.dom/771[0];
+                          const v783 : UInt* = .api444.dom/771[1];
+                          const eff = protect<Null>("Voters_upvoted".interact.out(.api444.dom/771, .api444.rngl/777 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v780 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v775 : Null* = null;
+                    const v784 : Bytes(20)* = "upvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v784, num1/773, num2/774 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; } } }
+              case Voters_timedOut0_454 as data_id/671 : Tuple(UInt, UInt)/True: {
+                let v672 : Null;
+                do(Just v672 : Null) {
+                  v672 : Null = null;
+                  exit(); };
+                const v662 : Null* = null;
+                let v675 : UInt;
+                do(Just v675 : UInt) {
+                  switch (data_id/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}) { local}) {
+                    case Voters_contributed0_454 as data_id/676 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_created0_454 as data_id/678 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_downvoted0_454 as data_id/680 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_projectDown0_454 as data_id/682 : Tuple(UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_timedOut0_454 as data_id/684 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_upvoted0_454 as data_id/686 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); } }
+                  exit(); };
+                const eff = checkPay(0, None);
+                fluid thisConsensusTime := thisConsensusTime/688
+                fluid thisConsensusSecs := thisConsensusSecs/689
+                fluid didPublish := didPublish/690
+                switch (.fork454.msg/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})) {
+                  case Voters_contributed0_454 as .fork454.msg/691 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_contributed", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_contributed0_454, AIC_Case );
+                    const num1/693 : UInt* = .api446.dom/691[0];
+                    const num2/694 : UInt* = .api446.dom/691[1];
+                    const v696 : Null* = null;
+                    const .api446.rngl/697 : Null* = emitLog(api("Voters_contributed"))(v696 );
+                    only("Voters_contributed") {
+                      const v699 : Address* = selfAddress("Voters_contributed", True, 698 )();
+                      let v700 : Null;
+                      do(Just v700 : Null) {
+                        didPublish/701 : Bool <- fluid didPublish
+                        local(Just v700 : Null) if didPublish/701 then {
+                          const v702 : UInt* = .api446.dom/691[0];
+                          const v703 : UInt* = .api446.dom/691[1];
+                          const eff = protect<Null>("Voters_contributed".interact.out(.api446.dom/691, .api446.rngl/697 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v700 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v695 : Null* = null;
+                    const v704 : Bytes(20)* = "contributed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v704, num1/693, num2/694 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_created0_454 as .fork454.msg/705 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                    const eff = setApiDetails("Voters_created", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_created0_454, AIC_Case );
+                    const obj/707 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                    const v709 : Null* = null;
+                    const .api443.rngl/710 : Null* = emitLog(api("Voters_created"))(v709 );
+                    only("Voters_created") {
+                      const v712 : Address* = selfAddress("Voters_created", True, 711 )();
+                      let v713 : Null;
+                      do(Just v713 : Null) {
+                        didPublish/714 : Bool <- fluid didPublish
+                        local(Just v713 : Null) if didPublish/714 then {
+                          const v715 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                          const v716 : UInt* = v715.id;
+                          const v717 : Bytes(25)* = v715.title;
+                          const v718 : Bytes(150)* = v715.link;
+                          const v719 : Bytes(180)* = v715.description;
+                          const v720 : Address* = v715.owner;
+                          const v721 : Contract* = v715.contractInfo;
+                          const v722 : UInt* = v715.blockCreated;
+                          const eff = protect<Null>("Voters_created".interact.out(.api443.dom/705, .api443.rngl/710 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v713 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v708 : Null* = null;
+                    const v723 : UInt* = obj/707.id;
+                    const v724 : Bytes(25)* = obj/707.title;
+                    const v725 : Bytes(150)* = obj/707.link;
+                    const v726 : Bytes(180)* = obj/707.description;
+                    const v727 : Address* = obj/707.owner;
+                    const v728 : Contract* = obj/707.contractInfo;
+                    const v729 : UInt* = obj/707.blockCreated;
+                    const eff = emitLog(event(Nothing, create))(v723, v724, v725, v726, v727, v728, v729 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_downvoted0_454 as .fork454.msg/730 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_downvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_downvoted0_454, AIC_Case );
+                    const num1/732 : UInt* = .api445.dom/730[0];
+                    const num2/733 : UInt* = .api445.dom/730[1];
+                    const v735 : Null* = null;
+                    const .api445.rngl/736 : Null* = emitLog(api("Voters_downvoted"))(v735 );
+                    only("Voters_downvoted") {
+                      const v738 : Address* = selfAddress("Voters_downvoted", True, 737 )();
+                      let v739 : Null;
+                      do(Just v739 : Null) {
+                        didPublish/740 : Bool <- fluid didPublish
+                        local(Just v739 : Null) if didPublish/740 then {
+                          const v741 : UInt* = .api445.dom/730[0];
+                          const v742 : UInt* = .api445.dom/730[1];
+                          const eff = protect<Null>("Voters_downvoted".interact.out(.api445.dom/730, .api445.rngl/736 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v739 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v734 : Null* = null;
+                    const v743 : Bytes(20)* = "downvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v743, num1/732, num2/733 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_projectDown0_454 as .fork454.msg/744 : Tuple(UInt)/True: {
+                    const eff = setApiDetails("Voters_projectDown", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_projectDown0_454, AIC_Case );
+                    const num1/746 : UInt* = .api448.dom/744[0];
+                    const v748 : Null* = null;
+                    const .api448.rngl/749 : Null* = emitLog(api("Voters_projectDown"))(v748 );
+                    only("Voters_projectDown") {
+                      const v751 : Address* = selfAddress("Voters_projectDown", True, 750 )();
+                      let v752 : Null;
+                      do(Just v752 : Null) {
+                        didPublish/753 : Bool <- fluid didPublish
+                        local(Just v752 : Null) if didPublish/753 then {
+                          const v754 : UInt* = .api448.dom/744[0];
+                          const eff = protect<Null>("Voters_projectDown".interact.out(.api448.dom/744, .api448.rngl/749 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v752 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v747 : Null* = null;
+                    const v755 : Bytes(20)* = "projectDown\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const v756 : UInt* = 0;
+                    const eff = emitLog(event(Nothing, that))(v755, num1/746, v756 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_timedOut0_454 as .fork454.msg/757 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_timedOut", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_timedOut0_454, AIC_Case );
+                    const num1/759 : UInt* = .api447.dom/757[0];
+                    const num2/760 : UInt* = .api447.dom/757[1];
+                    const v762 : Null* = null;
+                    const .api447.rngl/763 : Null* = emitLog(api("Voters_timedOut"))(v762 );
+                    only("Voters_timedOut") {
+                      const v765 : Address* = selfAddress("Voters_timedOut", True, 764 )();
+                      let v766 : Null;
+                      do(Just v766 : Null) {
+                        didPublish/767 : Bool <- fluid didPublish
+                        local(Just v766 : Null) if didPublish/767 then {
+                          const v768 : UInt* = .api447.dom/757[0];
+                          const v769 : UInt* = .api447.dom/757[1];
+                          const eff = protect<Null>("Voters_timedOut".interact.out(.api447.dom/757, .api447.rngl/763 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v766 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v761 : Null* = null;
+                    const v770 : Bytes(20)* = "timedOut\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v770, num1/759, num2/760 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_upvoted0_454 as .fork454.msg/771 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_upvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_upvoted0_454, AIC_Case );
+                    const num1/773 : UInt* = .api444.dom/771[0];
+                    const num2/774 : UInt* = .api444.dom/771[1];
+                    const v776 : Null* = null;
+                    const .api444.rngl/777 : Null* = emitLog(api("Voters_upvoted"))(v776 );
+                    only("Voters_upvoted") {
+                      const v779 : Address* = selfAddress("Voters_upvoted", True, 778 )();
+                      let v780 : Null;
+                      do(Just v780 : Null) {
+                        didPublish/781 : Bool <- fluid didPublish
+                        local(Just v780 : Null) if didPublish/781 then {
+                          const v782 : UInt* = .api444.dom/771[0];
+                          const v783 : UInt* = .api444.dom/771[1];
+                          const eff = protect<Null>("Voters_upvoted".interact.out(.api444.dom/771, .api444.rngl/777 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v780 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v775 : Null* = null;
+                    const v784 : Bytes(20)* = "upvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v784, num1/773, num2/774 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; } } }
+              case Voters_upvoted0_454 as data_id/673 : Tuple(UInt, UInt)/True: {
+                let v674 : Null;
+                do(Just v674 : Null) {
+                  v674 : Null = null;
+                  exit(); };
+                const v662 : Null* = null;
+                let v675 : UInt;
+                do(Just v675 : UInt) {
+                  switch (data_id/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)}) { local}) {
+                    case Voters_contributed0_454 as data_id/676 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_created0_454 as data_id/678 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_downvoted0_454 as data_id/680 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_projectDown0_454 as data_id/682 : Tuple(UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_timedOut0_454 as data_id/684 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); }
+                    case Voters_upvoted0_454 as data_id/686 : Tuple(UInt, UInt)/True: {
+                      v675 : UInt = 0;
+                      exit(); } }
+                  exit(); };
+                const eff = checkPay(0, None);
+                fluid thisConsensusTime := thisConsensusTime/688
+                fluid thisConsensusSecs := thisConsensusSecs/689
+                fluid didPublish := didPublish/690
+                switch (.fork454.msg/660 : Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})) {
+                  case Voters_contributed0_454 as .fork454.msg/691 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_contributed", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_contributed0_454, AIC_Case );
+                    const num1/693 : UInt* = .api446.dom/691[0];
+                    const num2/694 : UInt* = .api446.dom/691[1];
+                    const v696 : Null* = null;
+                    const .api446.rngl/697 : Null* = emitLog(api("Voters_contributed"))(v696 );
+                    only("Voters_contributed") {
+                      const v699 : Address* = selfAddress("Voters_contributed", True, 698 )();
+                      let v700 : Null;
+                      do(Just v700 : Null) {
+                        didPublish/701 : Bool <- fluid didPublish
+                        local(Just v700 : Null) if didPublish/701 then {
+                          const v702 : UInt* = .api446.dom/691[0];
+                          const v703 : UInt* = .api446.dom/691[1];
+                          const eff = protect<Null>("Voters_contributed".interact.out(.api446.dom/691, .api446.rngl/697 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v700 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v695 : Null* = null;
+                    const v704 : Bytes(20)* = "contributed\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v704, num1/693, num2/694 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_created0_454 as .fork454.msg/705 : Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]]))/True: {
+                    const eff = setApiDetails("Voters_created", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_created0_454, AIC_Case );
+                    const obj/707 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                    const v709 : Null* = null;
+                    const .api443.rngl/710 : Null* = emitLog(api("Voters_created"))(v709 );
+                    only("Voters_created") {
+                      const v712 : Address* = selfAddress("Voters_created", True, 711 )();
+                      let v713 : Null;
+                      do(Just v713 : Null) {
+                        didPublish/714 : Bool <- fluid didPublish
+                        local(Just v713 : Null) if didPublish/714 then {
+                          const v715 : Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])* = .api443.dom/705[0];
+                          const v716 : UInt* = v715.id;
+                          const v717 : Bytes(25)* = v715.title;
+                          const v718 : Bytes(150)* = v715.link;
+                          const v719 : Bytes(180)* = v715.description;
+                          const v720 : Address* = v715.owner;
+                          const v721 : Contract* = v715.contractInfo;
+                          const v722 : UInt* = v715.blockCreated;
+                          const eff = protect<Null>("Voters_created".interact.out(.api443.dom/705, .api443.rngl/710 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v713 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v708 : Null* = null;
+                    const v723 : UInt* = obj/707.id;
+                    const v724 : Bytes(25)* = obj/707.title;
+                    const v725 : Bytes(150)* = obj/707.link;
+                    const v726 : Bytes(180)* = obj/707.description;
+                    const v727 : Address* = obj/707.owner;
+                    const v728 : Contract* = obj/707.contractInfo;
+                    const v729 : UInt* = obj/707.blockCreated;
+                    const eff = emitLog(event(Nothing, create))(v723, v724, v725, v726, v727, v728, v729 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_downvoted0_454 as .fork454.msg/730 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_downvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_downvoted0_454, AIC_Case );
+                    const num1/732 : UInt* = .api445.dom/730[0];
+                    const num2/733 : UInt* = .api445.dom/730[1];
+                    const v735 : Null* = null;
+                    const .api445.rngl/736 : Null* = emitLog(api("Voters_downvoted"))(v735 );
+                    only("Voters_downvoted") {
+                      const v738 : Address* = selfAddress("Voters_downvoted", True, 737 )();
+                      let v739 : Null;
+                      do(Just v739 : Null) {
+                        didPublish/740 : Bool <- fluid didPublish
+                        local(Just v739 : Null) if didPublish/740 then {
+                          const v741 : UInt* = .api445.dom/730[0];
+                          const v742 : UInt* = .api445.dom/730[1];
+                          const eff = protect<Null>("Voters_downvoted".interact.out(.api445.dom/730, .api445.rngl/736 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v739 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v734 : Null* = null;
+                    const v743 : Bytes(20)* = "downvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v743, num1/732, num2/733 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_projectDown0_454 as .fork454.msg/744 : Tuple(UInt)/True: {
+                    const eff = setApiDetails("Voters_projectDown", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_projectDown0_454, AIC_Case );
+                    const num1/746 : UInt* = .api448.dom/744[0];
+                    const v748 : Null* = null;
+                    const .api448.rngl/749 : Null* = emitLog(api("Voters_projectDown"))(v748 );
+                    only("Voters_projectDown") {
+                      const v751 : Address* = selfAddress("Voters_projectDown", True, 750 )();
+                      let v752 : Null;
+                      do(Just v752 : Null) {
+                        didPublish/753 : Bool <- fluid didPublish
+                        local(Just v752 : Null) if didPublish/753 then {
+                          const v754 : UInt* = .api448.dom/744[0];
+                          const eff = protect<Null>("Voters_projectDown".interact.out(.api448.dom/744, .api448.rngl/749 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v752 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v747 : Null* = null;
+                    const v755 : Bytes(20)* = "projectDown\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const v756 : UInt* = 0;
+                    const eff = emitLog(event(Nothing, that))(v755, num1/746, v756 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_timedOut0_454 as .fork454.msg/757 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_timedOut", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_timedOut0_454, AIC_Case );
+                    const num1/759 : UInt* = .api447.dom/757[0];
+                    const num2/760 : UInt* = .api447.dom/757[1];
+                    const v762 : Null* = null;
+                    const .api447.rngl/763 : Null* = emitLog(api("Voters_timedOut"))(v762 );
+                    only("Voters_timedOut") {
+                      const v765 : Address* = selfAddress("Voters_timedOut", True, 764 )();
+                      let v766 : Null;
+                      do(Just v766 : Null) {
+                        didPublish/767 : Bool <- fluid didPublish
+                        local(Just v766 : Null) if didPublish/767 then {
+                          const v768 : UInt* = .api447.dom/757[0];
+                          const v769 : UInt* = .api447.dom/757[1];
+                          const eff = protect<Null>("Voters_timedOut".interact.out(.api447.dom/757, .api447.rngl/763 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v766 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v761 : Null* = null;
+                    const v770 : Bytes(20)* = "timedOut\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v770, num1/759, num2/760 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; }
+                  case Voters_upvoted0_454 as .fork454.msg/771 : Tuple(UInt, UInt)/True: {
+                    const eff = setApiDetails("Voters_upvoted", [Data({"Voters_contributed0_454": Tuple(UInt, UInt), "Voters_created0_454": Tuple(Struct([['"id"', UInt], ['"title"', Bytes(25)], ['"link"', Bytes(150)], ['"description"', Bytes(180)], ['"owner"', Address], ['"contractInfo"', Contract], ['"blockCreated"', UInt]])), "Voters_downvoted0_454": Tuple(UInt, UInt), "Voters_projectDown0_454": Tuple(UInt), "Voters_timedOut0_454": Tuple(UInt, UInt), "Voters_upvoted0_454": Tuple(UInt, UInt)})], Some Voters_upvoted0_454, AIC_Case );
+                    const num1/773 : UInt* = .api444.dom/771[0];
+                    const num2/774 : UInt* = .api444.dom/771[1];
+                    const v776 : Null* = null;
+                    const .api444.rngl/777 : Null* = emitLog(api("Voters_upvoted"))(v776 );
+                    only("Voters_upvoted") {
+                      const v779 : Address* = selfAddress("Voters_upvoted", True, 778 )();
+                      let v780 : Null;
+                      do(Just v780 : Null) {
+                        didPublish/781 : Bool <- fluid didPublish
+                        local(Just v780 : Null) if didPublish/781 then {
+                          const v782 : UInt* = .api444.dom/771[0];
+                          const v783 : UInt* = .api444.dom/771[1];
+                          const eff = protect<Null>("Voters_upvoted".interact.out(.api444.dom/771, .api444.rngl/777 ));
+                          exit(); }
+                        else {
+                          exit(); };
+                        v780 : Null = null;
+                        exit(); };
+                      exit(); };
+                    const v775 : Null* = null;
+                    const v784 : Bytes(20)* = "upvoted\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL\NUL";
+                    const eff = emitLog(event(Nothing, that))(v784, num1/773, num2/774 );
+                    {
+                      keepGoing/449 : Bool = keepGoing/449}
+                    continue; } } } } }
+           }
+      liftBoundary();
+      netBalance/785 : UInt <- fluid netBalance
+      const v786 : Bool* = 0 == netBalance/785;
+      const eff = claim(CT_Assert)(v786, Just "balance zero at application exit");
+      commit();
+      exit(); }; }
+  
