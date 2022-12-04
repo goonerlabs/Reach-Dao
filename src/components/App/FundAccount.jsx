@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { useReach } from "../../hooks/useReach";
 
 const FundAccount = () => {
-    const { user, standardUnit, defaultFundAmt, fundAccount, skipFundAccount } = useReach();
+    const { user, defaultFundAmt, fundAccount, skipFundAccount } = useReach();
     const [amount, setAmount] = useState({ amt: defaultFundAmt });
 
     return (
         <div>
             <h2>Fund amount</h2>
             <br />
-            Balance: { user.balance } { standardUnit }
+            Balance: { user.balance } MATIC
             <hr />
-            Would you like to fund your account with additional { standardUnit }?
+            Would you like to fund your account with additional MATIC?
             <br />
             (This only works on certain DevNets)
             <input

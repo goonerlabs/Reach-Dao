@@ -8,7 +8,7 @@ import proposal from "../../styles/Proposals.module.css";
 import info from "../../styles/Info.module.css";
 
 const Proposals = () => {
-    const { connectAndUpvote, connectAndDownvote, connectAndClaimRefund, proposals, setViews, standardUnit } = useReach();
+    const { connectAndUpvote, connectAndDownvote, connectAndClaimRefund, proposals, setViews} = useReach();
     const [page, setPage] = useState(1);
     const [pageNumbers, setPageNumbers] = useState([]);
 
@@ -118,7 +118,7 @@ const Proposals = () => {
                                 styles.widthMax,
                             ) }
                             >{ el.contribs ?? 0 } <br /> <span className={ fmtClasses(
-                                styles.tiny) }>{ standardUnit }</span></span>
+                                styles.tiny) }>MATIC</span></span>
                         </div>
                         <div onClick={ async () => {
                             connectAndDownvote(el.id, el.contract);

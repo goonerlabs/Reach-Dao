@@ -5,7 +5,7 @@ import info from '../../styles/Info.module.css'
 import proposal from '../../styles/Proposals.module.css'
 
 const Bounties = () => {
-	const { bounties, standardUnit, alertThis } = useReach()
+	const { bounties, alertThis } = useReach()
 	const [page, setPage] = useState(1)
 	const [pageNumbers, setPageNumbers] = useState([])
 
@@ -89,7 +89,7 @@ const Bounties = () => {
 						<span className={fmtClasses(proposal.prize)}>
 							{el.prize ?? 99999}
 						</span>{' '}
-						{standardUnit}
+						MATIC
 					</span>
 					<button
 						className={fmtClasses(styles.actionButton)}

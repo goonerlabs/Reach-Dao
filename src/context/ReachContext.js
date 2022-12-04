@@ -1,24 +1,24 @@
 import React, { useState } from "react";
 import {
-  loadStdlib,
-  ALGO_WalletConnect as WalletConnect,
+  loadStdlib
 } from "@reach-sh/stdlib";
 import { Helmet } from "react-helmet";
-import * as backend from "../../build/index.main.mjs";
+import * as backend from "../contracts/build/index.main.mjs";
 import { fmtClasses } from "../hooks/fmtClasses";
 import styles from "../styles/MainWrapper.module.css";
 import styled from "../styles/SubWrapper.module.css";
 import style from "../styles/Shared.module.css";
 import { Preloader } from "../components/Preloader";
-import icon from "./../assets/images/interlinked.jpg";
+import icon from "../assets/images/interlinked.jpg";
 import { Alert } from "../components/Alert";
 
-const reach = loadStdlib(process.env);
+const reach = loadStdlib({...process.env, REACH_CONNECTOR_MODE: 'ETH', REACH_NO_WARN: 'Y'});
 
 reach.setWalletFallback(
   reach.walletFallback({
-    providerEnv: "TestNet",
-    WalletConnect,
+    providerEnv: {
+      ETH_NODE_URI: 'https://matic-mubai.chainstacklabs.com',
+    },
   })
 );
 
@@ -104,6 +104,7 @@ const ReachContextProvider = ({ children }) => {
 
   const connectAccount = async () => {
     const account = await reach.getDefaultAccount();
+    account.setGasLimit(7920027)		
     setUser({
       account,
       balance: async () => {
