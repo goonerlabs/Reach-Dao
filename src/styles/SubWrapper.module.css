@@ -35,15 +35,15 @@
 }
 
 .infoWelcome {
-  background-image: url(./../../public/images/semiearth.jpg) !important;
+  background-image: url(../assets/images/semiearth.jpg) !important;
 }
 
 .proposalWelcome {
-  background-image: url(./../../public/images/contract.jpg) !important;
+  background-image: url(../assets/images/contract.jpg) !important;
 }
 
 .bountyWelcome {
-  background-image: url(./../../public/images/btresurecave.jpg) !important;
+  background-image: url(../assets/images/btresurecave.jpg) !important;
 }
 
 .welcomeInner {
