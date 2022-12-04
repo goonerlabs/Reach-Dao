@@ -1,7 +1,6 @@
-// Automatically generated with Reach 0.1.12 (0b231964)
+// Automatically generated with Reach 0.1.12 (1f68dfdb)
 pragma abicoder v2;
-
-pragma solidity ^0.8.12;
+pragma solidity ^0.8.16;
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -690,22 +689,34 @@ struct T0 {
   bool _None;
   address payable _Some;
   }
-
 enum _enum_T1 {None, Some}
 struct T1 {
   _enum_T1 which;
   bool _None;
   uint256 _Some;
   }
-
 enum _enum_T2 {None, Some}
 struct T2 {
   _enum_T2 which;
   bool _None;
   bool _Some;
   }
-
 struct T3 {
+  bool didRefund;
+  uint256 balance;
+  }
+struct T5 {
+  uint256 elem0;
+  uint256 elem1;
+  }
+struct T6 {
+  bytes32 elem0;
+  bytes32 elem1;
+  bytes32 elem2;
+  bytes32 elem3;
+  bytes22 elem4;
+  }
+struct T7 {
   bytes32 elem0;
   bytes32 elem1;
   bytes32 elem2;
@@ -713,91 +724,94 @@ struct T3 {
   bytes32 elem4;
   bytes20 elem5;
   }
-struct T4 {
-  address payable v843;
-  T3 v844;
-  uint256 v846;
-  }
-struct T6 {
-  bool v1185;
-  uint256 v1186;
-  }
-struct T7 {
-  bool svs;
-  T6 msg;
-  }
 struct T8 {
-  T3 v844;
-  bool v845;
+  uint256 id;
+  bytes25 title;
+  T6 link;
+  T7 description;
+  address payable owner;
+  address payable contractInfo;
+  uint256 blockCreated;
   }
 struct T9 {
-  uint256 time;
-  T8 msg;
+  uint256 elem0;
+  bool elem1;
   }
 struct T10 {
-  bytes32 elem0;
-  bytes32 elem1;
-  bytes32 elem2;
-  bytes32 elem3;
-  bytes22 elem4;
-  }
-struct T11 {
-  address payable v843;
-  address payable v851;
-  uint256 v852;
-  uint256 v860;
-  }
-struct T12 {
-  uint256 v862;
-  uint256 v863;
-  uint256 v864;
-  uint256 v865;
-  uint256 v866;
-  uint256 v872;
-  }
-struct T13 {
-  T11 svs;
-  T12 msg;
-  }
-struct T14 {
-  bytes25 v849;
-  T10 v850;
-  address payable v851;
-  uint256 v852;
-  uint256 v853;
-  }
-struct T15 {
-  uint256 time;
-  T14 msg;
-  }
-struct T16 {
-  address payable v843;
-  address payable v851;
-  uint256 v852;
-  uint256 v860;
-  uint256 v862;
-  uint256 v863;
-  uint256 v864;
-  uint256 v865;
-  uint256 v872;
-  }
-struct T17 {
   uint256 elem0;
   }
-enum _enum_T19 {Voters_contribute0_90, Voters_downvote0_90, Voters_upvote0_90}
-struct T19 {
-  _enum_T19 which;
-  T17 _Voters_contribute0_90;
+enum _enum_T11 {Voters_contribute0_90, Voters_downvote0_90, Voters_upvote0_90}
+struct T11 {
+  _enum_T11 which;
+  T10 _Voters_contribute0_90;
   bool _Voters_downvote0_90;
   bool _Voters_upvote0_90;
   }
-
+struct T12 {
+  uint256 elem0;
+  T11 elem1;
+  }
+struct T13 {
+  T8 elem0;
+  }
+enum _enum_T14 {Voters_contributed0_454, Voters_created0_454, Voters_downvoted0_454, Voters_projectDown0_454, Voters_timedOut0_454, Voters_upvoted0_454}
+struct T14 {
+  _enum_T14 which;
+  T5 _Voters_contributed0_454;
+  T13 _Voters_created0_454;
+  T5 _Voters_downvoted0_454;
+  T10 _Voters_projectDown0_454;
+  T5 _Voters_timedOut0_454;
+  T5 _Voters_upvoted0_454;
+  }
+struct T15 {
+  uint256 elem0;
+  T14 elem1;
+  }
+struct T16 {
+  uint256 elem0;
+  T7 elem1;
+  bool elem2;
+  }
+struct T17 {
+  address payable v843;
+  T7 v844;
+  uint256 v846;
+  }
+struct T18 {
+  bool elem0;
+  uint256 elem1;
+  }
+struct T19 {
+  uint256 elem0;
+  bytes25 elem1;
+  T6 elem2;
+  address payable elem3;
+  uint256 elem4;
+  uint256 elem5;
+  }
 struct T20 {
-  T19 v919;
+  address payable elem0;
+  address payable elem1;
+  uint256 elem2;
+  uint256 elem3;
+  uint256 elem4;
+  uint256 elem5;
+  uint256 elem6;
+  uint256 elem7;
+  uint256 elem8;
+  uint256 elem9;
   }
 struct T21 {
-  uint256 time;
-  T20 msg;
+  address payable v843;
+  address payable v851;
+  uint256 v852;
+  uint256 v860;
+  uint256 v862;
+  uint256 v863;
+  uint256 v864;
+  uint256 v865;
+  uint256 v872;
   }
 struct T22 {
   address payable v843;
@@ -806,138 +820,29 @@ struct T22 {
   uint256 v860;
   uint256 v863;
   uint256 v864;
-  }
-struct T23 {
-  uint256 v1108;
-  uint256 v1109;
-  uint256 v1110;
-  uint256 v1116;
-  }
-struct T24 {
-  T22 svs;
-  T23 msg;
-  }
-struct T25 {
-  uint256 time;
-  bool msg;
-  }
-struct T26 {
-  address payable v843;
-  address payable v851;
-  uint256 v852;
-  uint256 v860;
-  uint256 v863;
-  uint256 v864;
   uint256 v1108;
   uint256 v1109;
   uint256 v1116;
   }
-struct T27 {
-  bool didRefund;
-  uint256 balance;
-  }
-struct T28 {
-  bool v1126;
-  }
-struct T29 {
-  uint256 time;
-  T28 msg;
-  }
-struct T30 {
-  uint256 elem0;
-  uint256 elem1;
-  }
-struct T31 {
-  uint256 id;
-  bytes25 title;
-  T10 link;
-  T3 description;
-  address payable owner;
-  address payable contractInfo;
-  uint256 blockCreated;
-  }
-struct T32 {
-  T31 elem0;
-  }
-enum _enum_T33 {Voters_contributed0_454, Voters_created0_454, Voters_downvoted0_454, Voters_projectDown0_454, Voters_timedOut0_454, Voters_upvoted0_454}
-struct T33 {
-  _enum_T33 which;
-  T30 _Voters_contributed0_454;
-  T32 _Voters_created0_454;
-  T30 _Voters_downvoted0_454;
-  T17 _Voters_projectDown0_454;
-  T30 _Voters_timedOut0_454;
-  T30 _Voters_upvoted0_454;
-  }
-
-struct T34 {
-  T33 v1291;
-  }
-struct T35 {
-  uint256 time;
-  T34 msg;
-  }
-
-
 contract ReachContract is Stdlib {
   uint256 current_step;
   uint256 current_time;
     bytes current_svbs;
   uint256 creation_time;
+     bool locked;
   function _reachCreationTime() external view returns (uint256) { return creation_time; }
   function _reachCurrentTime() external view returns (uint256) { return current_time; }
   function _reachCurrentState() external view returns (uint256, bytes memory) { return (current_step, current_svbs); }
-  mapping (address => T0) map0;
-  function __reachMap0Ref(address addr)  internal view returns (T0 memory res) {
-    if (map0[addr].which == _enum_T0.Some) {
-      res = map0[addr];}
-    else {
-      res.which = _enum_T0.None;
-      res._None = false;
-      }}
-  function _reachMap0Ref(address addr)  external view returns (T0 memory res) {
-    res = __reachMap0Ref(addr);}
-  
-  mapping (address => T1) map1;
-  function __reachMap1Ref(address addr)  internal view returns (T1 memory res) {
-    if (map1[addr].which == _enum_T1.Some) {
-      res = map1[addr];}
-    else {
-      res.which = _enum_T1.None;
-      res._None = false;
-      }}
-  function _reachMap1Ref(address addr)  external view returns (T1 memory res) {
-    res = __reachMap1Ref(addr);}
-  
-  mapping (address => T2) map2;
-  function __reachMap2Ref(address addr)  internal view returns (T2 memory res) {
-    if (map2[addr].which == _enum_T2.Some) {
-      res = map2[addr];}
-    else {
-      res.which = _enum_T2.None;
-      res._None = false;
-      }}
-  function _reachMap2Ref(address addr)  external view returns (T2 memory res) {
-    res = __reachMap2Ref(addr);}
-  
-  
-  
-  struct ApiRng {
-    T27 Voters_claimRefund;
-    uint256 Voters_contribute;
-    bool Voters_contributed;
-    bool Voters_created;
-    uint256 Voters_downvote;
-    bool Voters_downvoted;
-    bool Voters_projectDown;
-    bool Voters_timedOut;
-    uint256 Voters_upvote;
-    bool Voters_upvoted;
-    }
+  event _reach_e0(address _who, T16 _a);
+  event _reach_e1(address _who, T19 _a);
+  event _reach_e3(address _who, T12 _a);
+  event _reach_e4(address _who, T10 _a);
+  event _reach_e6(address _who, T9 _a);
+  event _reach_e8(address _who, T15 _a);
   event _reach_oe_v1015(uint256 v0);
   event _reach_oe_v1079(uint256 v0);
-  event _reach_oe_v1151(T27 v0);
-  event _reach_oe_v1161(T27 v0);
+  event _reach_oe_v1151(T3 v0);
+  event _reach_oe_v1161(T3 v0);
   event _reach_oe_v1307(bool v0);
   event _reach_oe_v1410(bool v0);
   event _reach_oe_v1526(bool v0);
@@ -945,469 +850,709 @@ contract ReachContract is Stdlib {
   event _reach_oe_v1733(bool v0);
   event _reach_oe_v1837(bool v0);
   event _reach_oe_v939(uint256 v0);
-  event create(uint256 v0, bytes25 v1, T10 v2, T3 v3, address payable v4, address payable v5, uint256 v6);
-  event created(uint256 v0, bytes25 v1, T10 v2, T3 v3, address payable v4, address payable v5, uint256 v6);
+  event create(uint256 v0, bytes25 v1, T6 v2, T7 v3, address payable v4, address payable v5, uint256 v6);
+  event created(uint256 v0, bytes25 v1, T6 v2, T7 v3, address payable v4, address payable v5, uint256 v6);
   event log(bytes20 v0, uint256 v1);
   event that(bytes20 v0, uint256 v1, uint256 v2);
-  
-  
-  event _reach_e0(address _who, T9 _a);
-  
-  constructor(T9 memory _a) payable {
-    current_step = 0x0;
-    creation_time = uint256(block.number);
-    
-    
+  receive () external payable {}
+  fallback () external payable {}
+  mapping (address => T0) _reachm_0;
+  function __reachm_0Ref(address addr) internal view returns (T0 memory res) {
+    if (_reachm_0[addr].which == _enum_T0.Some) {
+      res = _reachm_0[addr];
+      }
+    else {
+      res.which = _enum_T0.None;
+      res._None = false;
+      }
+    }
+  function _reachm_0Ref(address addr) external view returns (T0 memory res) {
+    res = __reachm_0Ref(addr);
+    }
+  mapping (address => T1) _reachm_1;
+  function __reachm_1Ref(address addr) internal view returns (T1 memory res) {
+    if (_reachm_1[addr].which == _enum_T1.Some) {
+      res = _reachm_1[addr];
+      }
+    else {
+      res.which = _enum_T1.None;
+      res._None = false;
+      }
+    }
+  function _reachm_1Ref(address addr) external view returns (T1 memory res) {
+    res = __reachm_1Ref(addr);
+    }
+  mapping (address => T2) _reachm_2;
+  function __reachm_2Ref(address addr) internal view returns (T2 memory res) {
+    if (_reachm_2[addr].which == _enum_T2.Some) {
+      res = _reachm_2[addr];
+      }
+    else {
+      res.which = _enum_T2.None;
+      res._None = false;
+      }
+    }
+  function _reachm_2Ref(address addr) external view returns (T2 memory res) {
+    res = __reachm_2Ref(addr);
+    }
+  struct Memory {
+    bool nil;
+    T3 _reachr_Voters_claimRefund;
+    uint256 _reachr_Voters_contribute;
+    bool _reachr_Voters_contributed;
+    bool _reachr_Voters_created;
+    uint256 _reachr_Voters_downvote;
+    bool _reachr_Voters_downvoted;
+    bool _reachr_Voters_projectDown;
+    bool _reachr_Voters_timedOut;
+    uint256 _reachr_Voters_upvote;
+    bool _reachr_Voters_upvoted;
+    }
+  function Voters_claimRefund() external payable returns (T3 memory) {
+    Memory memory _Memory;
+    bool  _ja;
+    _reacha_Voters_claimRefund(_ja, _Memory);
+    return _Memory._reachr_Voters_claimRefund;
+    }
+  function Voters_contribute(uint256 v3354) external payable returns (uint256) {
+    Memory memory _Memory;
+    _reacha_Voters_contribute(v3354, _Memory);
+    return _Memory._reachr_Voters_contribute;
+    }
+  function Voters_contributed(uint256 v3359, uint256 v3360) external payable returns (bool) {
+    Memory memory _Memory;
+    T5  memory _ja;
+    _ja.elem0 = v3359;
+    _ja.elem1 = v3360;
+    _reacha_Voters_contributed(_ja, _Memory);
+    return _Memory._reachr_Voters_contributed;
+    }
+  function Voters_created(T8 calldata v3365) external payable returns (bool) {
+    Memory memory _Memory;
+    _reacha_Voters_created(v3365, _Memory);
+    return _Memory._reachr_Voters_created;
+    }
+  function Voters_downvote() external payable returns (uint256) {
+    Memory memory _Memory;
+    bool  _ja;
+    _reacha_Voters_downvote(_ja, _Memory);
+    return _Memory._reachr_Voters_downvote;
+    }
+  function Voters_downvoted(uint256 v3374, uint256 v3375) external payable returns (bool) {
+    Memory memory _Memory;
+    T5  memory _ja;
+    _ja.elem0 = v3374;
+    _ja.elem1 = v3375;
+    _reacha_Voters_downvoted(_ja, _Memory);
+    return _Memory._reachr_Voters_downvoted;
+    }
+  function Voters_projectDown(uint256 v3380) external payable returns (bool) {
+    Memory memory _Memory;
+    _reacha_Voters_projectDown(v3380, _Memory);
+    return _Memory._reachr_Voters_projectDown;
+    }
+  function Voters_timedOut(uint256 v3385, uint256 v3386) external payable returns (bool) {
+    Memory memory _Memory;
+    T5  memory _ja;
+    _ja.elem0 = v3385;
+    _ja.elem1 = v3386;
+    _reacha_Voters_timedOut(_ja, _Memory);
+    return _Memory._reachr_Voters_timedOut;
+    }
+  function Voters_upvote() external payable returns (uint256) {
+    Memory memory _Memory;
+    bool  _ja;
+    _reacha_Voters_upvote(_ja, _Memory);
+    return _Memory._reachr_Voters_upvote;
+    }
+  function Voters_upvoted(uint256 v3395, uint256 v3396) external payable returns (bool) {
+    Memory memory _Memory;
+    T5  memory _ja;
+    _ja.elem0 = v3395;
+    _ja.elem1 = v3396;
+    _reacha_Voters_upvoted(_ja, _Memory);
+    return _Memory._reachr_Voters_upvoted;
+    }
+  struct _F3497 {
+    bool v3352;
+    }
+  function _reacha_Voters_claimRefund(bool _a, Memory memory _Memory) internal  {
+    _F3497 memory _f;
+    T9  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3352;
+    _reachi_6(_ja, _Memory);
+    }
+  struct _F3498 {
+    T10 v3356;
+    T11 v3357;
+    }
+  function _reacha_Voters_contribute(uint256 _a, Memory memory _Memory) internal  {
+    _F3498 memory _f;
+    _f.v3356.elem0 = _a;
+    _f.v3357.which = _enum_T11.Voters_contribute0_90;
+    _f.v3357._Voters_contribute0_90 = _f.v3356;
+    T12  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3357;
+    _reachi_3(_ja, _Memory);
+    }
+  struct _F3499 {
+    T5 v3362;
+    T14 v3363;
+    }
+  function _reacha_Voters_contributed(T5 memory _a, Memory memory _Memory) internal  {
+    _F3499 memory _f;
+    _f.v3362.elem0 = _a.elem0;
+    _f.v3362.elem1 = _a.elem1;
+    _f.v3363.which = _enum_T14.Voters_contributed0_454;
+    _f.v3363._Voters_contributed0_454 = _f.v3362;
+    T15  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3363;
+    _reachi_8(_ja, _Memory);
+    }
+  struct _F3500 {
+    T13 v3367;
+    T14 v3368;
+    }
+  function _reacha_Voters_created(T8 memory _a, Memory memory _Memory) internal  {
+    _F3500 memory _f;
+    _f.v3367.elem0 = _a;
+    _f.v3368.which = _enum_T14.Voters_created0_454;
+    _f.v3368._Voters_created0_454 = _f.v3367;
+    T15  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3368;
+    _reachi_8(_ja, _Memory);
+    }
+  struct _F3501 {
+    bool v3371;
+    T11 v3372;
+    }
+  function _reacha_Voters_downvote(bool _a, Memory memory _Memory) internal  {
+    _F3501 memory _f;
+    _f.v3372.which = _enum_T11.Voters_downvote0_90;
+    _f.v3372._Voters_downvote0_90 = _f.v3371;
+    T12  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3372;
+    _reachi_3(_ja, _Memory);
+    }
+  struct _F3502 {
+    T5 v3377;
+    T14 v3378;
+    }
+  function _reacha_Voters_downvoted(T5 memory _a, Memory memory _Memory) internal  {
+    _F3502 memory _f;
+    _f.v3377.elem0 = _a.elem0;
+    _f.v3377.elem1 = _a.elem1;
+    _f.v3378.which = _enum_T14.Voters_downvoted0_454;
+    _f.v3378._Voters_downvoted0_454 = _f.v3377;
+    T15  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3378;
+    _reachi_8(_ja, _Memory);
+    }
+  struct _F3503 {
+    T10 v3382;
+    T14 v3383;
+    }
+  function _reacha_Voters_projectDown(uint256 _a, Memory memory _Memory) internal  {
+    _F3503 memory _f;
+    _f.v3382.elem0 = _a;
+    _f.v3383.which = _enum_T14.Voters_projectDown0_454;
+    _f.v3383._Voters_projectDown0_454 = _f.v3382;
+    T15  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3383;
+    _reachi_8(_ja, _Memory);
+    }
+  struct _F3504 {
+    T5 v3388;
+    T14 v3389;
+    }
+  function _reacha_Voters_timedOut(T5 memory _a, Memory memory _Memory) internal  {
+    _F3504 memory _f;
+    _f.v3388.elem0 = _a.elem0;
+    _f.v3388.elem1 = _a.elem1;
+    _f.v3389.which = _enum_T14.Voters_timedOut0_454;
+    _f.v3389._Voters_timedOut0_454 = _f.v3388;
+    T15  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3389;
+    _reachi_8(_ja, _Memory);
+    }
+  struct _F3505 {
+    bool v3392;
+    T11 v3393;
+    }
+  function _reacha_Voters_upvote(bool _a, Memory memory _Memory) internal  {
+    _F3505 memory _f;
+    _f.v3393.which = _enum_T11.Voters_upvote0_90;
+    _f.v3393._Voters_upvote0_90 = _f.v3392;
+    T12  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3393;
+    _reachi_3(_ja, _Memory);
+    }
+  struct _F3506 {
+    T5 v3398;
+    T14 v3399;
+    }
+  function _reacha_Voters_upvoted(T5 memory _a, Memory memory _Memory) internal  {
+    _F3506 memory _f;
+    _f.v3398.elem0 = _a.elem0;
+    _f.v3398.elem1 = _a.elem1;
+    _f.v3399.which = _enum_T14.Voters_upvoted0_454;
+    _f.v3399._Voters_upvoted0_454 = _f.v3398;
+    T15  memory _ja;
+    _ja.elem0 = (uint256(0));
+    _ja.elem1 = _f.v3399;
+    _reachi_8(_ja, _Memory);
+    }
+  function _reachi_0(T16 memory _a, Memory memory _Memory) internal  {
+    reachRequire((! locked), uint256(7) /*'locked'*/);
     emit _reach_e0(msg.sender, _a);
-    reachRequire((msg.value == uint256(0)), uint256(7) /*'(./src/contracts/index.rsh:85:12:dot,[],"verify network token pay amount")'*/);
-    if (_a.msg.v845) {
-      T4 memory nsvs;
+    reachRequire((((_a.elem0) == uint256(0)) || (current_time == (_a.elem0))), uint256(8) /*'time check at ./src/contracts/index.rsh:85:12:dot'*/);
+    reachRequire((msg.value == uint256(0)), uint256(9) /*'(./src/contracts/index.rsh:85:12:dot,[],"verify network token pay amount")'*/);
+    if ((_a.elem2)) {
+      T17 memory nsvs;
       nsvs.v843 = payable(msg.sender);
-      nsvs.v844 = _a.msg.v844;
+      nsvs.v844 = (_a.elem1);
       nsvs.v846 = uint256(block.number);
       current_step = uint256(1);
       current_time = uint256(block.number);
       current_svbs = abi.encode(nsvs);
       }
     else {
-      T7 memory la;
-      la.msg.v1185 = true;
-      la.msg.v1186 = uint256(block.number);
-      l7(la);
+      T18  memory _ja;
+      _ja.elem0 = (true);
+      _ja.elem1 = (uint256(block.number));
+      _reachl_7(_ja, _Memory);
       }
-    
     }
-  
-  event _reach_e1(address _who, T15 _a);
-  
-  function _reach_m1(T15 calldata _a) external payable {
-    ApiRng memory _r;
-    _reach_m1(_a, _r);
-    }
-  function _reach_m1(T15 memory _a, ApiRng memory _apiRet)  internal  {
-    reachRequire((current_step == uint256(1)), uint256(10) /*'state step check at ./src/contracts/index.rsh:89:14:dot'*/);
-    reachRequire(((_a.time == uint256(0)) || (current_time == _a.time)), uint256(11) /*'state time check at ./src/contracts/index.rsh:89:14:dot'*/);
-    current_step = 0x0;
-    (T4 memory _svs) = abi.decode(current_svbs, (T4));
-    
-    
+  function _reachi_1(T19 memory _a, Memory memory _Memory) internal  {
+    reachRequire((! locked), uint256(10) /*'locked'*/);
     emit _reach_e1(msg.sender, _a);
-    reachRequire((msg.value == uint256(0)), uint256(8) /*'(./src/contracts/index.rsh:89:14:dot,[],"verify network token pay amount")'*/);
-    reachRequire(((_svs.v843 == payable(msg.sender))), uint256(9) /*'(./src/contracts/index.rsh:89:14:dot,[],Just "sender correct")'*/);
-    emit created( _a.msg.v852,  _a.msg.v849,  _a.msg.v850,  _svs.v844,  _a.msg.v851,  (payable(address(this))),  (uint256(block.number)));
-    
-    
-    T13 memory la;
-    la.svs.v843 = _svs.v843;
-    la.svs.v851 = _a.msg.v851;
-    la.svs.v852 = _a.msg.v852;
-    la.svs.v860 = (safeAdd(_svs.v846, _a.msg.v853));
-    la.msg.v862 = uint256(0);
-    la.msg.v863 = uint256(0);
-    la.msg.v864 = uint256(0);
-    la.msg.v865 = uint256(block.number);
-    la.msg.v866 = _svs.v846;
-    la.msg.v872 = uint256(0);
-    l2(la);
-    
-    
+    reachRequire((current_step == uint256(1)), uint256(11) /*'state check at ./src/contracts/index.rsh:89:14:dot'*/);
+    (T17 memory _svs) = abi.decode(current_svbs, (T17));
+    reachRequire((((_a.elem0) == uint256(0)) || (current_time == (_a.elem0))), uint256(12) /*'time check at ./src/contracts/index.rsh:89:14:dot'*/);
+    reachRequire((msg.value == uint256(0)), uint256(13) /*'(./src/contracts/index.rsh:89:14:dot,[],"verify network token pay amount")'*/);
+    reachRequire(((_svs.v843 == payable(msg.sender))), uint256(14) /*'(./src/contracts/index.rsh:89:14:dot,[],Just "sender correct")'*/);
+    emit created( (_a.elem4),  (_a.elem1),  (_a.elem2),  _svs.v844,  (_a.elem3),  (payable(address(this))),  (uint256(block.number)));
+    T20  memory _ja;
+    _ja.elem0 = _svs.v843;
+    _ja.elem1 = (_a.elem3);
+    _ja.elem2 = (_a.elem4);
+    _ja.elem3 = (safeAdd(_svs.v846, (_a.elem5)));
+    _ja.elem4 = (uint256(0));
+    _ja.elem5 = (uint256(0));
+    _ja.elem6 = (uint256(0));
+    _ja.elem7 = (uint256(block.number));
+    _ja.elem8 = (_svs.v846);
+    _ja.elem9 = (uint256(0));
+    _reachl_2(_ja, _Memory);
     }
-  
-  
-  function l2(T13 memory _a)  internal {
-    
-    
-    if ((_a.svs.v860 > _a.msg.v866)) {
-      T16 memory nsvs;
-      nsvs.v843 = _a.svs.v843;
-      nsvs.v851 = _a.svs.v851;
-      nsvs.v852 = _a.svs.v852;
-      nsvs.v860 = _a.svs.v860;
-      nsvs.v862 = _a.msg.v862;
-      nsvs.v863 = _a.msg.v863;
-      nsvs.v864 = _a.msg.v864;
-      nsvs.v865 = _a.msg.v865;
-      nsvs.v872 = _a.msg.v872;
-      current_step = uint256(4);
-      current_time = uint256(block.number);
-      current_svbs = abi.encode(nsvs);
-      }
-    else {
-      _a.svs.v843.transfer(_a.msg.v872);
-      current_step = 0x0;
-      current_time = 0x0;
-      delete current_svbs;
-      }
-    
-    }
-  
-  event _reach_e3(address _who, T21 _a);
-  struct _F3 {
-    T17 v922;
+  struct _F3509 {
+    T10 v922;
     uint256 v933;
     uint256 v950;
     uint256 v952;
     uint256 v1015;
     uint256 v1079;
     }
-  function _reach_m3(T21 calldata _a) external payable {
-    ApiRng memory _r;
-    _reach_m3(_a, _r);
-    }
-  function _reach_m3(T21 memory _a, ApiRng memory _apiRet)  internal  {
-    reachRequire((current_step == uint256(4)), uint256(16) /*'state step check at ./src/contracts/index.rsh:104:56:dot'*/);
-    reachRequire(((_a.time == uint256(0)) || (current_time == _a.time)), uint256(17) /*'state time check at ./src/contracts/index.rsh:104:56:dot'*/);
-    current_step = 0x0;
-    (T16 memory _svs) = abi.decode(current_svbs, (T16));
-    _F3 memory _f;
-    reachRequire((uint256(block.number) < _svs.v860), uint256(18) /*'timeout check at ./src/contracts/index.rsh:104:56:dot'*/);
-    
+  function _reachi_3(T12 memory _a, Memory memory _Memory) internal  {
+    _F3509 memory _f;
+    reachRequire((! locked), uint256(15) /*'locked'*/);
     emit _reach_e3(msg.sender, _a);
-    if (_a.msg.v919.which == _enum_T19.Voters_contribute0_90) {
-      _f.v922 = _a.msg.v919._Voters_contribute0_90;
-      reachRequire((((_f.v922.elem0) > uint256(0))), uint256(12) /*'(reach standard library:57:5:application,[at ./src/contracts/index.rsh:116:14:application call to "check" (defined at: reach standard library:49:32:function exp),at ./src/contracts/index.rsh:115:38:application call to [unknown function] (defined at: ./src/contracts/index.rsh:115:38:function exp),at ./src/contracts/index.rsh:104:56:application call to [unknown function] (defined at: ./src/contracts/index.rsh:115:38:function exp),at ./src/contracts/index.rsh:104:56:application call to [unknown function] (defined at: ./src/contracts/index.rsh:104:56:function exp)],Just "Contribution too small")'*/);
-      _f.v933 = unsafeAdd(_svs.v872, (_f.v922.elem0));
-      reachRequire((msg.value == (_f.v922.elem0)), uint256(13) /*'(./src/contracts/index.rsh:104:56:dot,[],"verify network token pay amount")'*/);
-      emit _reach_oe_v939( (_f.v933));
-      _apiRet.Voters_contribute = (_f.v933);
+    reachRequire((current_step == uint256(4)), uint256(16) /*'state check at ./src/contracts/index.rsh:104:56:dot'*/);
+    (T21 memory _svs) = abi.decode(current_svbs, (T21));
+    reachRequire((((_a.elem0) == uint256(0)) || (current_time == (_a.elem0))), uint256(17) /*'time check at ./src/contracts/index.rsh:104:56:dot'*/);
+    reachRequire((uint256(block.number) < _svs.v860), uint256(18) /*'timeout check at ./src/contracts/index.rsh:104:56:dot'*/);
+    if ((_a.elem1).which == _enum_T11.Voters_contribute0_90) {
+    _f.v922 = (_a.elem1)._Voters_contribute0_90;
+    reachRequire((((_f.v922.elem0) > uint256(0))), uint256(19) /*'(reach standard library:57:5:application,[at ./src/contracts/index.rsh:116:14:application call to "check" (defined at: reach standard library:49:32:function exp),at ./src/contracts/index.rsh:115:38:application call to [unknown function] (defined at: ./src/contracts/index.rsh:115:38:function exp),at ./src/contracts/index.rsh:104:56:application call to [unknown function] (defined at: ./src/contracts/index.rsh:115:38:function exp),at ./src/contracts/index.rsh:104:56:application call to [unknown function] (defined at: ./src/contracts/index.rsh:104:56:function exp)],Just "Contribution too small")'*/);
+    _f.v933 = unsafeAdd(_svs.v872, (_f.v922.elem0));
+    reachRequire((msg.value == (_f.v922.elem0)), uint256(20) /*'(./src/contracts/index.rsh:104:56:dot,[],"verify network token pay amount")'*/);
+    emit _reach_oe_v939( (_f.v933));
+    _Memory._reachr_Voters_contribute = (_f.v933);
+    if (((uint256((__reachm_2Ref(payable(msg.sender))).which)) == uint256(1))) {
+      if ((__reachm_1Ref(payable(msg.sender))).which == _enum_T1.None) {
+      _f.v950 = uint256(0);
+      } else if ((__reachm_1Ref(payable(msg.sender))).which == _enum_T1.Some) {
+      _f.v952 = (__reachm_1Ref(payable(msg.sender)))._Some;
+      _f.v950 = _f.v952;
+      }
+      _reachm_1[payable(msg.sender)].which = _enum_T1.Some;
+      _reachm_1[payable(msg.sender)]._Some = (safeAdd(_f.v950, (_f.v922.elem0)));
       
-      if (((uint256((__reachMap2Ref(payable(msg.sender))).which)) == uint256(1))) {
-        if ((__reachMap1Ref(payable(msg.sender))).which == _enum_T1.None) {
-          
-          _f.v950 = uint256(0);
-          
-          }
-        else {
-          if ((__reachMap1Ref(payable(msg.sender))).which == _enum_T1.Some) {
-            _f.v952 = (__reachMap1Ref(payable(msg.sender)))._Some;
-            _f.v950 = _f.v952;
-            
-            }
-          else {
-            }}
-        map1[payable(msg.sender)].which = _enum_T1.Some;
-        map1[payable(msg.sender)]._Some = (safeAdd(_f.v950, (_f.v922.elem0)));
-        
-        T13 memory la;
-        la.svs.v843 = _svs.v843;
-        la.svs.v851 = _svs.v851;
-        la.svs.v852 = _svs.v852;
-        la.svs.v860 = _svs.v860;
-        la.msg.v862 = (safeAdd(_svs.v862, (_f.v922.elem0)));
-        la.msg.v863 = _svs.v863;
-        la.msg.v864 = _svs.v864;
-        la.msg.v865 = uint256(block.number);
-        la.msg.v866 = _svs.v865;
-        la.msg.v872 = _f.v933;
-        l2(la);
-        }
-      else {
-        map0[payable(msg.sender)].which = _enum_T0.Some;
-        map0[payable(msg.sender)]._Some = payable(msg.sender);
-        
-        map1[payable(msg.sender)].which = _enum_T1.Some;
-        map1[payable(msg.sender)]._Some = (_f.v922.elem0);
-        
-        map2[payable(msg.sender)].which = _enum_T2.Some;
-        map2[payable(msg.sender)]._Some = false;
-        
-        T13 memory la;
-        la.svs.v843 = _svs.v843;
-        la.svs.v851 = _svs.v851;
-        la.svs.v852 = _svs.v852;
-        la.svs.v860 = _svs.v860;
-        la.msg.v862 = (safeAdd(_svs.v862, (_f.v922.elem0)));
-        la.msg.v863 = _svs.v863;
-        la.msg.v864 = _svs.v864;
-        la.msg.v865 = uint256(block.number);
-        la.msg.v866 = _svs.v865;
-        la.msg.v872 = _f.v933;
-        l2(la);
-        }
+      T20  memory _ja;
+      _ja.elem0 = _svs.v843;
+      _ja.elem1 = _svs.v851;
+      _ja.elem2 = _svs.v852;
+      _ja.elem3 = _svs.v860;
+      _ja.elem4 = ((safeAdd(_svs.v862, (_f.v922.elem0))));
+      _ja.elem5 = (_svs.v863);
+      _ja.elem6 = (_svs.v864);
+      _ja.elem7 = (uint256(block.number));
+      _ja.elem8 = (_svs.v865);
+      _ja.elem9 = (_f.v933);
+      _reachl_2(_ja, _Memory);
       }
     else {
-      if (_a.msg.v919.which == _enum_T19.Voters_downvote0_90) {
-        
-        reachRequire((msg.value == uint256(0)), uint256(14) /*'(./src/contracts/index.rsh:104:56:dot,[],"verify network token pay amount")'*/);
-        _f.v1015 = safeAdd(_svs.v863, uint256(1));
-        emit _reach_oe_v1015( _f.v1015);
-        _apiRet.Voters_downvote = _f.v1015;
-        
-        T13 memory la;
-        la.svs.v843 = _svs.v843;
-        la.svs.v851 = _svs.v851;
-        la.svs.v852 = _svs.v852;
-        la.svs.v860 = _svs.v860;
-        la.msg.v862 = _svs.v862;
-        la.msg.v863 = _f.v1015;
-        la.msg.v864 = _svs.v864;
-        la.msg.v865 = uint256(block.number);
-        la.msg.v866 = _svs.v865;
-        la.msg.v872 = _svs.v872;
-        l2(la);
-        
-        }
-      else {
-        if (_a.msg.v919.which == _enum_T19.Voters_upvote0_90) {
-          
-          reachRequire((msg.value == uint256(0)), uint256(15) /*'(./src/contracts/index.rsh:104:56:dot,[],"verify network token pay amount")'*/);
-          _f.v1079 = safeAdd(_svs.v864, uint256(1));
-          emit _reach_oe_v1079( _f.v1079);
-          _apiRet.Voters_upvote = _f.v1079;
-          
-          T13 memory la;
-          la.svs.v843 = _svs.v843;
-          la.svs.v851 = _svs.v851;
-          la.svs.v852 = _svs.v852;
-          la.svs.v860 = _svs.v860;
-          la.msg.v862 = _svs.v862;
-          la.msg.v863 = _svs.v863;
-          la.msg.v864 = _f.v1079;
-          la.msg.v865 = uint256(block.number);
-          la.msg.v866 = _svs.v865;
-          la.msg.v872 = _svs.v872;
-          l2(la);
-          
-          }
-        else {
-          }}}
-    
+      _reachm_0[payable(msg.sender)].which = _enum_T0.Some;
+      _reachm_0[payable(msg.sender)]._Some = payable(msg.sender);
+      
+      _reachm_1[payable(msg.sender)].which = _enum_T1.Some;
+      _reachm_1[payable(msg.sender)]._Some = (_f.v922.elem0);
+      
+      _reachm_2[payable(msg.sender)].which = _enum_T2.Some;
+      _reachm_2[payable(msg.sender)]._Some = false;
+      
+      T20  memory _ja;
+      _ja.elem0 = _svs.v843;
+      _ja.elem1 = _svs.v851;
+      _ja.elem2 = _svs.v852;
+      _ja.elem3 = _svs.v860;
+      _ja.elem4 = ((safeAdd(_svs.v862, (_f.v922.elem0))));
+      _ja.elem5 = (_svs.v863);
+      _ja.elem6 = (_svs.v864);
+      _ja.elem7 = (uint256(block.number));
+      _ja.elem8 = (_svs.v865);
+      _ja.elem9 = (_f.v933);
+      _reachl_2(_ja, _Memory);
+      }
+    } else if ((_a.elem1).which == _enum_T11.Voters_downvote0_90) {
+    reachRequire((msg.value == uint256(0)), uint256(21) /*'(./src/contracts/index.rsh:104:56:dot,[],"verify network token pay amount")'*/);
+    _f.v1015 = safeAdd(_svs.v863, uint256(1));
+    emit _reach_oe_v1015( _f.v1015);
+    _Memory._reachr_Voters_downvote = _f.v1015;
+    T20  memory _ja;
+    _ja.elem0 = _svs.v843;
+    _ja.elem1 = _svs.v851;
+    _ja.elem2 = _svs.v852;
+    _ja.elem3 = _svs.v860;
+    _ja.elem4 = (_svs.v862);
+    _ja.elem5 = (_f.v1015);
+    _ja.elem6 = (_svs.v864);
+    _ja.elem7 = (uint256(block.number));
+    _ja.elem8 = (_svs.v865);
+    _ja.elem9 = (_svs.v872);
+    _reachl_2(_ja, _Memory);
+    } else if ((_a.elem1).which == _enum_T11.Voters_upvote0_90) {
+    reachRequire((msg.value == uint256(0)), uint256(22) /*'(./src/contracts/index.rsh:104:56:dot,[],"verify network token pay amount")'*/);
+    _f.v1079 = safeAdd(_svs.v864, uint256(1));
+    emit _reach_oe_v1079( _f.v1079);
+    _Memory._reachr_Voters_upvote = _f.v1079;
+    T20  memory _ja;
+    _ja.elem0 = _svs.v843;
+    _ja.elem1 = _svs.v851;
+    _ja.elem2 = _svs.v852;
+    _ja.elem3 = _svs.v860;
+    _ja.elem4 = (_svs.v862);
+    _ja.elem5 = (_svs.v863);
+    _ja.elem6 = (_f.v1079);
+    _ja.elem7 = (uint256(block.number));
+    _ja.elem8 = (_svs.v865);
+    _ja.elem9 = (_svs.v872);
+    _reachl_2(_ja, _Memory);
     }
-  
-  event _reach_e4(address _who, T25 _a);
-  struct _F4 {
+    }
+  struct _F3510 {
     bytes20 v1095;
     uint256 v1100;
     bytes20 v1106;
     bytes20 v1174;
     }
-  function _reach_m4(T25 calldata _a) external payable {
-    ApiRng memory _r;
-    _reach_m4(_a, _r);
-    }
-  function _reach_m4(T25 memory _a, ApiRng memory _apiRet)  internal  {
-    reachRequire((current_step == uint256(4)), uint256(21) /*'state step check at ./src/contracts/index.rsh:140:18:dot'*/);
-    reachRequire(((_a.time == uint256(0)) || (current_time == _a.time)), uint256(22) /*'state time check at ./src/contracts/index.rsh:140:18:dot'*/);
-    current_step = 0x0;
-    (T16 memory _svs) = abi.decode(current_svbs, (T16));
-    _F4 memory _f;
-    reachRequire((uint256(block.number) >= _svs.v860), uint256(23) /*'timeout check at ./src/contracts/index.rsh:140:18:dot'*/);
-    
+  function _reachi_4(T10 memory _a, Memory memory _Memory) internal  {
+    _F3510 memory _f;
+    reachRequire((! locked), uint256(23) /*'locked'*/);
     emit _reach_e4(msg.sender, _a);
-    reachRequire((msg.value == uint256(0)), uint256(19) /*'(./src/contracts/index.rsh:140:18:dot,[at ./src/contracts/index.rsh:139:36:application call to [unknown function] (defined at: ./src/contracts/index.rsh:139:36:function exp)],"verify network token pay amount")'*/);
-    reachRequire(((_svs.v843 == payable(msg.sender))), uint256(20) /*'(./src/contracts/index.rsh:140:18:dot,[at ./src/contracts/index.rsh:139:36:application call to [unknown function] (defined at: ./src/contracts/index.rsh:139:36:function exp)],Just "sender correct")'*/);
+    reachRequire((current_step == uint256(4)), uint256(24) /*'state check at ./src/contracts/index.rsh:140:18:dot'*/);
+    (T21 memory _svs) = abi.decode(current_svbs, (T21));
+    reachRequire((((_a.elem0) == uint256(0)) || (current_time == (_a.elem0))), uint256(25) /*'time check at ./src/contracts/index.rsh:140:18:dot'*/);
+    reachRequire((uint256(block.number) >= _svs.v860), uint256(26) /*'timeout check at ./src/contracts/index.rsh:140:18:dot'*/);
+    reachRequire((msg.value == uint256(0)), uint256(27) /*'(./src/contracts/index.rsh:140:18:dot,[at ./src/contracts/index.rsh:139:36:application call to [unknown function] (defined at: ./src/contracts/index.rsh:139:36:function exp)],"verify network token pay amount")'*/);
+    reachRequire(((_svs.v843 == payable(msg.sender))), uint256(28) /*'(./src/contracts/index.rsh:140:18:dot,[at ./src/contracts/index.rsh:139:36:application call to [unknown function] (defined at: ./src/contracts/index.rsh:139:36:function exp)],Just "sender correct")'*/);
     if ((((_svs.v863 > _svs.v864) ? uint256(0) : ((_svs.v864 == _svs.v863) ? uint256(0) : uint256(1))) == uint256(1))) {
       _f.v1095 = hex'7061737365640000000000000000000000000000';
       emit log( _f.v1095,  _svs.v852);
-      
-      
       _f.v1100 = unsafeSub(_svs.v872, _svs.v872);
       _svs.v851.transfer(_svs.v872);
-      T13 memory la;
-      la.svs.v843 = _svs.v843;
-      la.svs.v851 = _svs.v851;
-      la.svs.v852 = _svs.v852;
-      la.svs.v860 = _svs.v860;
-      la.msg.v862 = _f.v1100;
-      la.msg.v863 = _svs.v863;
-      la.msg.v864 = _svs.v864;
-      la.msg.v865 = uint256(block.number);
-      la.msg.v866 = _svs.v865;
-      la.msg.v872 = _f.v1100;
-      l2(la);
+      T20  memory _ja;
+      _ja.elem0 = _svs.v843;
+      _ja.elem1 = _svs.v851;
+      _ja.elem2 = _svs.v852;
+      _ja.elem3 = _svs.v860;
+      _ja.elem4 = (_f.v1100);
+      _ja.elem5 = (_svs.v863);
+      _ja.elem6 = (_svs.v864);
+      _ja.elem7 = (uint256(block.number));
+      _ja.elem8 = (_svs.v865);
+      _ja.elem9 = (_f.v1100);
+      _reachl_2(_ja, _Memory);
       }
     else {
       if ((_svs.v872 > uint256(0))) {
         _f.v1106 = hex'6661696c65640000000000000000000000000000';
         emit log( _f.v1106,  _svs.v852);
-        
-        
-        T24 memory la;
-        la.svs.v843 = _svs.v843;
-        la.svs.v851 = _svs.v851;
-        la.svs.v852 = _svs.v852;
-        la.svs.v860 = _svs.v860;
-        la.svs.v863 = _svs.v863;
-        la.svs.v864 = _svs.v864;
-        la.msg.v1108 = _svs.v872;
-        la.msg.v1109 = uint256(block.number);
-        la.msg.v1110 = _svs.v865;
-        la.msg.v1116 = _svs.v872;
-        l5(la);
+        T20  memory _ja;
+        _ja.elem0 = _svs.v843;
+        _ja.elem1 = _svs.v851;
+        _ja.elem2 = _svs.v852;
+        _ja.elem3 = _svs.v860;
+        _ja.elem4 = _svs.v863;
+        _ja.elem5 = _svs.v864;
+        _ja.elem6 = (_svs.v872);
+        _ja.elem7 = (uint256(block.number));
+        _ja.elem8 = (_svs.v865);
+        _ja.elem9 = (_svs.v872);
+        _reachl_5(_ja, _Memory);
         }
       else {
         _f.v1174 = hex'646f776e00000000000000000000000000000000';
         emit log( _f.v1174,  _svs.v852);
-        
-        
-        T13 memory la;
-        la.svs.v843 = _svs.v843;
-        la.svs.v851 = _svs.v851;
-        la.svs.v852 = _svs.v852;
-        la.svs.v860 = _svs.v860;
-        la.msg.v862 = _svs.v872;
-        la.msg.v863 = _svs.v863;
-        la.msg.v864 = _svs.v864;
-        la.msg.v865 = uint256(block.number);
-        la.msg.v866 = _svs.v865;
-        la.msg.v872 = _svs.v872;
-        l2(la);
-        }}
-    
-    }
-  
-  struct _F5 {
-    bytes20 v1170;
-    }
-  function l5(T24 memory _a)  internal {
-    _F5 memory _f;
-    
-    if ((_a.msg.v1108 > uint256(0))) {
-      T26 memory nsvs;
-      nsvs.v843 = _a.svs.v843;
-      nsvs.v851 = _a.svs.v851;
-      nsvs.v852 = _a.svs.v852;
-      nsvs.v860 = _a.svs.v860;
-      nsvs.v863 = _a.svs.v863;
-      nsvs.v864 = _a.svs.v864;
-      nsvs.v1108 = _a.msg.v1108;
-      nsvs.v1109 = _a.msg.v1109;
-      nsvs.v1116 = _a.msg.v1116;
-      current_step = uint256(6);
-      current_time = uint256(block.number);
-      current_svbs = abi.encode(nsvs);
+        T20  memory _ja;
+        _ja.elem0 = _svs.v843;
+        _ja.elem1 = _svs.v851;
+        _ja.elem2 = _svs.v852;
+        _ja.elem3 = _svs.v860;
+        _ja.elem4 = (_svs.v872);
+        _ja.elem5 = (_svs.v863);
+        _ja.elem6 = (_svs.v864);
+        _ja.elem7 = (uint256(block.number));
+        _ja.elem8 = (_svs.v865);
+        _ja.elem9 = (_svs.v872);
+        _reachl_2(_ja, _Memory);
+        }
       }
-    else {
-      _f.v1170 = hex'646f776e00000000000000000000000000000000';
-      emit log( _f.v1170,  _a.svs.v852);
-      
-      
-      T13 memory la;
-      la.svs.v843 = _a.svs.v843;
-      la.svs.v851 = _a.svs.v851;
-      la.svs.v852 = _a.svs.v852;
-      la.svs.v860 = _a.svs.v860;
-      la.msg.v862 = _a.msg.v1116;
-      la.msg.v863 = _a.svs.v863;
-      la.msg.v864 = _a.svs.v864;
-      la.msg.v865 = _a.msg.v1109;
-      la.msg.v866 = _a.msg.v1110;
-      la.msg.v872 = _a.msg.v1116;
-      l2(la);
-      }
-    
     }
-  
-  event _reach_e6(address _who, T29 _a);
-  struct _F6 {
+  struct _F3511 {
     uint256 v1131;
     uint256 v1133;
     address payable v1141;
     address payable v1143;
     bytes20 v1149;
     uint256 v1150;
-    T27 v1151;
+    T3 v1151;
     bytes20 v1160;
-    T27 v1161;
+    T3 v1161;
     }
-  function _reach_m6(T29 calldata _a) external payable {
-    ApiRng memory _r;
-    _reach_m6(_a, _r);
-    }
-  function _reach_m6(T29 memory _a, ApiRng memory _apiRet)  internal  {
-    reachRequire((current_step == uint256(6)), uint256(25) /*'state step check at ./src/contracts/index.rsh:159:50:dot'*/);
-    reachRequire(((_a.time == uint256(0)) || (current_time == _a.time)), uint256(26) /*'state time check at ./src/contracts/index.rsh:159:50:dot'*/);
-    current_step = 0x0;
-    (T26 memory _svs) = abi.decode(current_svbs, (T26));
-    _F6 memory _f;
-    
+  function _reachi_6(T9 memory _a, Memory memory _Memory) internal  {
+    _F3511 memory _f;
+    reachRequire((! locked), uint256(29) /*'locked'*/);
     emit _reach_e6(msg.sender, _a);
-    reachRequire((msg.value == uint256(0)), uint256(24) /*'(./src/contracts/index.rsh:159:50:dot,[at ./src/contracts/index.rsh:139:36:application call to [unknown function] (defined at: ./src/contracts/index.rsh:139:36:function exp)],"verify network token pay amount")'*/);
-    if ((__reachMap1Ref(payable(msg.sender))).which == _enum_T1.None) {
-      
-      _f.v1131 = uint256(0);
-      
+    reachRequire((current_step == uint256(6)), uint256(30) /*'state check at ./src/contracts/index.rsh:159:50:dot'*/);
+    (T22 memory _svs) = abi.decode(current_svbs, (T22));
+    _a.elem1;
+    reachRequire((((_a.elem0) == uint256(0)) || (current_time == (_a.elem0))), uint256(31) /*'time check at ./src/contracts/index.rsh:159:50:dot'*/);
+    reachRequire((msg.value == uint256(0)), uint256(32) /*'(./src/contracts/index.rsh:159:50:dot,[at ./src/contracts/index.rsh:139:36:application call to [unknown function] (defined at: ./src/contracts/index.rsh:139:36:function exp)],"verify network token pay amount")'*/);
+    if ((__reachm_1Ref(payable(msg.sender))).which == _enum_T1.None) {
+    _f.v1131 = uint256(0);
+    } else if ((__reachm_1Ref(payable(msg.sender))).which == _enum_T1.Some) {
+    _f.v1133 = (__reachm_1Ref(payable(msg.sender)))._Some;
+    _f.v1131 = _f.v1133;
+    }
+    if (((_svs.v1116 >= _f.v1131) ? ((uint256((__reachm_2Ref(payable(msg.sender))).which)) == uint256(1)) : false)) {
+      if ((__reachm_0Ref(payable(msg.sender))).which == _enum_T0.None) {
+      _f.v1141 = _svs.v843;
+      } else if ((__reachm_0Ref(payable(msg.sender))).which == _enum_T0.Some) {
+      _f.v1143 = (__reachm_0Ref(payable(msg.sender)))._Some;
+      _f.v1141 = _f.v1143;
       }
-    else {
-      if ((__reachMap1Ref(payable(msg.sender))).which == _enum_T1.Some) {
-        _f.v1133 = (__reachMap1Ref(payable(msg.sender)))._Some;
-        _f.v1131 = _f.v1133;
-        
-        }
-      else {
-        }}
-    if (((_svs.v1116 >= _f.v1131) ? ((uint256((__reachMap2Ref(payable(msg.sender))).which)) == uint256(1)) : false)) {
-      if ((__reachMap0Ref(payable(msg.sender))).which == _enum_T0.None) {
-        
-        _f.v1141 = _svs.v843;
-        
-        }
-      else {
-        if ((__reachMap0Ref(payable(msg.sender))).which == _enum_T0.Some) {
-          _f.v1143 = (__reachMap0Ref(payable(msg.sender)))._Some;
-          _f.v1141 = _f.v1143;
-          
-          }
-        else {
-          }}
       _f.v1141.transfer(_f.v1131);
-      delete map2[payable(msg.sender)];
+      delete _reachm_2[payable(msg.sender)];
       _f.v1149 = hex'726566756e645061737365640000000000000000';
       emit log( _f.v1149,  _svs.v852);
-      
-      
       _f.v1150 = safeSub(_svs.v1108, _f.v1131);
       _f.v1151.didRefund = true;
       _f.v1151.balance = _f.v1150;
-      
       emit _reach_oe_v1151( _f.v1151);
-      _apiRet.Voters_claimRefund = _f.v1151;
-      
-      T24 memory la;
-      la.svs.v843 = _svs.v843;
-      la.svs.v851 = _svs.v851;
-      la.svs.v852 = _svs.v852;
-      la.svs.v860 = _svs.v860;
-      la.svs.v863 = _svs.v863;
-      la.svs.v864 = _svs.v864;
-      la.msg.v1108 = _f.v1150;
-      la.msg.v1109 = uint256(block.number);
-      la.msg.v1110 = _svs.v1109;
-      la.msg.v1116 = (unsafeSub(_svs.v1116, _f.v1131));
-      l5(la);
+      _Memory._reachr_Voters_claimRefund = _f.v1151;
+      T20  memory _ja;
+      _ja.elem0 = _svs.v843;
+      _ja.elem1 = _svs.v851;
+      _ja.elem2 = _svs.v852;
+      _ja.elem3 = _svs.v860;
+      _ja.elem4 = _svs.v863;
+      _ja.elem5 = _svs.v864;
+      _ja.elem6 = (_f.v1150);
+      _ja.elem7 = (uint256(block.number));
+      _ja.elem8 = (_svs.v1109);
+      _ja.elem9 = ((unsafeSub(_svs.v1116, _f.v1131)));
+      _reachl_5(_ja, _Memory);
       }
     else {
       _f.v1160 = hex'726566756e644661696c65640000000000000000';
       emit log( _f.v1160,  _svs.v852);
-      
-      
       _f.v1161.didRefund = false;
       _f.v1161.balance = _svs.v1108;
-      
       emit _reach_oe_v1161( _f.v1161);
-      _apiRet.Voters_claimRefund = _f.v1161;
-      
-      T24 memory la;
-      la.svs.v843 = _svs.v843;
-      la.svs.v851 = _svs.v851;
-      la.svs.v852 = _svs.v852;
-      la.svs.v860 = _svs.v860;
-      la.svs.v863 = _svs.v863;
-      la.svs.v864 = _svs.v864;
-      la.msg.v1108 = _svs.v1108;
-      la.msg.v1109 = uint256(block.number);
-      la.msg.v1110 = _svs.v1109;
-      la.msg.v1116 = _svs.v1116;
-      l5(la);
+      _Memory._reachr_Voters_claimRefund = _f.v1161;
+      T20  memory _ja;
+      _ja.elem0 = _svs.v843;
+      _ja.elem1 = _svs.v851;
+      _ja.elem2 = _svs.v852;
+      _ja.elem3 = _svs.v860;
+      _ja.elem4 = _svs.v863;
+      _ja.elem5 = _svs.v864;
+      _ja.elem6 = (_svs.v1108);
+      _ja.elem7 = (uint256(block.number));
+      _ja.elem8 = (_svs.v1109);
+      _ja.elem9 = (_svs.v1116);
+      _reachl_5(_ja, _Memory);
       }
-    
     }
-  
-  
-  function l7(T7 memory _a)  internal {
-    
-    
-    if (_a.msg.v1185) {
+  struct _F3512 {
+    T5 v1294;
+    bytes20 v1315;
+    T13 v1386;
+    T5 v1478;
+    bytes20 v1534;
+    T10 v1570;
+    bytes20 v1636;
+    T5 v1662;
+    bytes20 v1741;
+    T5 v1754;
+    bytes20 v1845;
+    }
+  function _reachi_8(T15 memory _a, Memory memory _Memory) internal  {
+    _F3512 memory _f;
+    reachRequire((! locked), uint256(33) /*'locked'*/);
+    emit _reach_e8(msg.sender, _a);
+    reachRequire((current_step == uint256(9)), uint256(34) /*'state check at ./src/contracts/index.rsh:197:37:dot'*/);
+    (bool _svs) = abi.decode(current_svbs, (bool));
+    reachRequire((((_a.elem0) == uint256(0)) || (current_time == (_a.elem0))), uint256(35) /*'time check at ./src/contracts/index.rsh:197:37:dot'*/);
+    if ((_a.elem1).which == _enum_T14.Voters_contributed0_454) {
+    _f.v1294 = (_a.elem1)._Voters_contributed0_454;
+    reachRequire((msg.value == uint256(0)), uint256(36) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
+    emit _reach_oe_v1307( (false));
+    _Memory._reachr_Voters_contributed = (false);
+    _f.v1315 = hex'636f6e7472696275746564000000000000000000';
+    emit that( _f.v1315,  (_f.v1294.elem0),  (_f.v1294.elem1));
+    T18  memory _ja;
+    _ja.elem0 = (true);
+    _ja.elem1 = (uint256(block.number));
+    _reachl_7(_ja, _Memory);
+    } else if ((_a.elem1).which == _enum_T14.Voters_created0_454) {
+    _f.v1386 = (_a.elem1)._Voters_created0_454;
+    reachRequire((msg.value == uint256(0)), uint256(37) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
+    emit _reach_oe_v1410( (false));
+    _Memory._reachr_Voters_created = (false);
+    emit create( ((_f.v1386.elem0).id),  ((_f.v1386.elem0).title),  ((_f.v1386.elem0).link),  ((_f.v1386.elem0).description),  ((_f.v1386.elem0).owner),  ((_f.v1386.elem0).contractInfo),  ((_f.v1386.elem0).blockCreated));
+    T18  memory _ja;
+    _ja.elem0 = (true);
+    _ja.elem1 = (uint256(block.number));
+    _reachl_7(_ja, _Memory);
+    } else if ((_a.elem1).which == _enum_T14.Voters_downvoted0_454) {
+    _f.v1478 = (_a.elem1)._Voters_downvoted0_454;
+    reachRequire((msg.value == uint256(0)), uint256(38) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
+    emit _reach_oe_v1526( (false));
+    _Memory._reachr_Voters_downvoted = (false);
+    _f.v1534 = hex'646f776e766f7465640000000000000000000000';
+    emit that( _f.v1534,  (_f.v1478.elem0),  (_f.v1478.elem1));
+    T18  memory _ja;
+    _ja.elem0 = (true);
+    _ja.elem1 = (uint256(block.number));
+    _reachl_7(_ja, _Memory);
+    } else if ((_a.elem1).which == _enum_T14.Voters_projectDown0_454) {
+    _f.v1570 = (_a.elem1)._Voters_projectDown0_454;
+    reachRequire((msg.value == uint256(0)), uint256(39) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
+    emit _reach_oe_v1629( (false));
+    _Memory._reachr_Voters_projectDown = (false);
+    _f.v1636 = hex'70726f6a656374446f776e000000000000000000';
+    emit that( _f.v1636,  (_f.v1570.elem0),  (uint256(0)));
+    T18  memory _ja;
+    _ja.elem0 = (true);
+    _ja.elem1 = (uint256(block.number));
+    _reachl_7(_ja, _Memory);
+    } else if ((_a.elem1).which == _enum_T14.Voters_timedOut0_454) {
+    _f.v1662 = (_a.elem1)._Voters_timedOut0_454;
+    reachRequire((msg.value == uint256(0)), uint256(40) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
+    emit _reach_oe_v1733( (false));
+    _Memory._reachr_Voters_timedOut = (false);
+    _f.v1741 = hex'74696d65644f7574000000000000000000000000';
+    emit that( _f.v1741,  (_f.v1662.elem0),  (_f.v1662.elem1));
+    T18  memory _ja;
+    _ja.elem0 = (true);
+    _ja.elem1 = (uint256(block.number));
+    _reachl_7(_ja, _Memory);
+    } else if ((_a.elem1).which == _enum_T14.Voters_upvoted0_454) {
+    _f.v1754 = (_a.elem1)._Voters_upvoted0_454;
+    reachRequire((msg.value == uint256(0)), uint256(41) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
+    emit _reach_oe_v1837( (false));
+    _Memory._reachr_Voters_upvoted = (false);
+    _f.v1845 = hex'7570766f74656400000000000000000000000000';
+    emit that( _f.v1845,  (_f.v1754.elem0),  (_f.v1754.elem1));
+    T18  memory _ja;
+    _ja.elem0 = (true);
+    _ja.elem1 = (uint256(block.number));
+    _reachl_7(_ja, _Memory);
+    }
+    }
+  function _reachl_2(T20 memory _a, Memory memory _Memory) internal  {
+    if ((_a.elem3 > _a.elem8)) {
+      T21 memory nsvs;
+      nsvs.v843 = _a.elem0;
+      nsvs.v851 = _a.elem1;
+      nsvs.v852 = _a.elem2;
+      nsvs.v860 = _a.elem3;
+      nsvs.v862 = _a.elem4;
+      nsvs.v863 = _a.elem5;
+      nsvs.v864 = _a.elem6;
+      nsvs.v865 = _a.elem7;
+      nsvs.v872 = _a.elem9;
+      current_step = uint256(4);
+      current_time = uint256(block.number);
+      current_svbs = abi.encode(nsvs);
+      }
+    else {
+      _a.elem0.transfer(_a.elem9);
+      current_step = 0x0;
+      current_time = 0x0;
+      delete current_svbs;
+      }
+    }
+  struct _F3514 {
+    bytes20 v1170;
+    }
+  function _reachl_5(T20 memory _a, Memory memory _Memory) internal  {
+    _F3514 memory _f;
+    if ((_a.elem6 > uint256(0))) {
+      T22 memory nsvs;
+      nsvs.v843 = _a.elem0;
+      nsvs.v851 = _a.elem1;
+      nsvs.v852 = _a.elem2;
+      nsvs.v860 = _a.elem3;
+      nsvs.v863 = _a.elem4;
+      nsvs.v864 = _a.elem5;
+      nsvs.v1108 = _a.elem6;
+      nsvs.v1109 = _a.elem7;
+      nsvs.v1116 = _a.elem9;
+      current_step = uint256(6);
+      current_time = uint256(block.number);
+      current_svbs = abi.encode(nsvs);
+      }
+    else {
+      _f.v1170 = hex'646f776e00000000000000000000000000000000';
+      emit log( _f.v1170,  _a.elem2);
+      T20  memory _ja;
+      _ja.elem0 = _a.elem0;
+      _ja.elem1 = _a.elem1;
+      _ja.elem2 = _a.elem2;
+      _ja.elem3 = _a.elem3;
+      _ja.elem4 = (_a.elem9);
+      _ja.elem5 = (_a.elem4);
+      _ja.elem6 = (_a.elem5);
+      _ja.elem7 = (_a.elem7);
+      _ja.elem8 = (_a.elem8);
+      _ja.elem9 = (_a.elem9);
+      _reachl_2(_ja, _Memory);
+      }
+    }
+  function _reachl_7(T18 memory _a, Memory memory _Memory) internal  {
+    if (_a.elem0) {
       bool nsvs;
       current_step = uint256(9);
       current_time = uint256(block.number);
@@ -1418,274 +1563,31 @@ contract ReachContract is Stdlib {
       current_time = 0x0;
       delete current_svbs;
       }
-    
     }
-  
-  event _reach_e8(address _who, T35 _a);
-  struct _F8 {
-    T30 v1294;
-    bytes20 v1315;
-    T32 v1386;
-    T30 v1478;
-    bytes20 v1534;
-    T17 v1570;
-    bytes20 v1636;
-    T30 v1662;
-    bytes20 v1741;
-    T30 v1754;
-    bytes20 v1845;
-    }
-  function _reach_m8(T35 calldata _a) external payable {
-    ApiRng memory _r;
-    _reach_m8(_a, _r);
-    }
-  function _reach_m8(T35 memory _a, ApiRng memory _apiRet)  internal  {
-    reachRequire((current_step == uint256(9)), uint256(33) /*'state step check at ./src/contracts/index.rsh:197:37:dot'*/);
-    reachRequire(((_a.time == uint256(0)) || (current_time == _a.time)), uint256(34) /*'state time check at ./src/contracts/index.rsh:197:37:dot'*/);
+  constructor(T16 memory v3402) payable {
     current_step = 0x0;
-    (bool _svs) = abi.decode(current_svbs, (bool));
-    _F8 memory _f;
-    
-    emit _reach_e8(msg.sender, _a);
-    if (_a.msg.v1291.which == _enum_T33.Voters_contributed0_454) {
-      _f.v1294 = _a.msg.v1291._Voters_contributed0_454;
-      reachRequire((msg.value == uint256(0)), uint256(27) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
-      emit _reach_oe_v1307( (false));
-      _apiRet.Voters_contributed = (false);
-      
-      _f.v1315 = hex'636f6e7472696275746564000000000000000000';
-      emit that( _f.v1315,  (_f.v1294.elem0),  (_f.v1294.elem1));
-      
-      
-      T7 memory la;
-      la.msg.v1185 = true;
-      la.msg.v1186 = uint256(block.number);
-      l7(la);
-      
-      }
-    else {
-      if (_a.msg.v1291.which == _enum_T33.Voters_created0_454) {
-        _f.v1386 = _a.msg.v1291._Voters_created0_454;
-        reachRequire((msg.value == uint256(0)), uint256(28) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
-        emit _reach_oe_v1410( (false));
-        _apiRet.Voters_created = (false);
-        
-        emit create( ((_f.v1386.elem0).id),  ((_f.v1386.elem0).title),  ((_f.v1386.elem0).link),  ((_f.v1386.elem0).description),  ((_f.v1386.elem0).owner),  ((_f.v1386.elem0).contractInfo),  ((_f.v1386.elem0).blockCreated));
-        
-        
-        T7 memory la;
-        la.msg.v1185 = true;
-        la.msg.v1186 = uint256(block.number);
-        l7(la);
-        
-        }
-      else {
-        if (_a.msg.v1291.which == _enum_T33.Voters_downvoted0_454) {
-          _f.v1478 = _a.msg.v1291._Voters_downvoted0_454;
-          reachRequire((msg.value == uint256(0)), uint256(29) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
-          emit _reach_oe_v1526( (false));
-          _apiRet.Voters_downvoted = (false);
-          
-          _f.v1534 = hex'646f776e766f7465640000000000000000000000';
-          emit that( _f.v1534,  (_f.v1478.elem0),  (_f.v1478.elem1));
-          
-          
-          T7 memory la;
-          la.msg.v1185 = true;
-          la.msg.v1186 = uint256(block.number);
-          l7(la);
-          
-          }
-        else {
-          if (_a.msg.v1291.which == _enum_T33.Voters_projectDown0_454) {
-            _f.v1570 = _a.msg.v1291._Voters_projectDown0_454;
-            reachRequire((msg.value == uint256(0)), uint256(30) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
-            emit _reach_oe_v1629( (false));
-            _apiRet.Voters_projectDown = (false);
-            
-            _f.v1636 = hex'70726f6a656374446f776e000000000000000000';
-            emit that( _f.v1636,  (_f.v1570.elem0),  (uint256(0)));
-            
-            
-            T7 memory la;
-            la.msg.v1185 = true;
-            la.msg.v1186 = uint256(block.number);
-            l7(la);
-            
-            }
-          else {
-            if (_a.msg.v1291.which == _enum_T33.Voters_timedOut0_454) {
-              _f.v1662 = _a.msg.v1291._Voters_timedOut0_454;
-              reachRequire((msg.value == uint256(0)), uint256(31) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
-              emit _reach_oe_v1733( (false));
-              _apiRet.Voters_timedOut = (false);
-              
-              _f.v1741 = hex'74696d65644f7574000000000000000000000000';
-              emit that( _f.v1741,  (_f.v1662.elem0),  (_f.v1662.elem1));
-              
-              
-              T7 memory la;
-              la.msg.v1185 = true;
-              la.msg.v1186 = uint256(block.number);
-              l7(la);
-              
-              }
-            else {
-              if (_a.msg.v1291.which == _enum_T33.Voters_upvoted0_454) {
-                _f.v1754 = _a.msg.v1291._Voters_upvoted0_454;
-                reachRequire((msg.value == uint256(0)), uint256(32) /*'(./src/contracts/index.rsh:197:37:dot,[],"verify network token pay amount")'*/);
-                emit _reach_oe_v1837( (false));
-                _apiRet.Voters_upvoted = (false);
-                
-                _f.v1845 = hex'7570766f74656400000000000000000000000000';
-                emit that( _f.v1845,  (_f.v1754.elem0),  (_f.v1754.elem1));
-                
-                
-                T7 memory la;
-                la.msg.v1185 = true;
-                la.msg.v1186 = uint256(block.number);
-                l7(la);
-                
-                }
-              else {
-                }}}}}}
-    
+    creation_time = uint256(block.number);
+    Memory memory _Memory;
+    _reachi_0(v3402, _Memory);
     }
-  
-  
-  function _reach_internal_Voters_claimRefund()  internal returns (T27  memory) {
-    T29 memory _t;
-    _t.msg.v1126 = false;
-    {
-      ApiRng memory _r;
-      _reach_m6(_t, _r);
-      return _r.Voters_claimRefund;
-      }
+  function _reachp_1(T19 calldata v3406) external payable returns (bool) {
+    Memory memory _Memory;
+    _reachi_1(v3406, _Memory);
     }
-  function Voters_claimRefund()  external payable returns (T27  memory) {
-    return _reach_internal_Voters_claimRefund();}
-  
-  function _reach_internal_Voters_contribute(uint256 _a0)  internal returns (uint256 ) {
-    T21 memory _t;
-    _t.msg.v919.which = _enum_T19.Voters_contribute0_90;
-    _t.msg.v919._Voters_contribute0_90.elem0 = _a0;
-    {
-      ApiRng memory _r;
-      _reach_m3(_t, _r);
-      return _r.Voters_contribute;
-      }
+  function _reachp_3(T12 calldata v3414) external payable returns (bool) {
+    Memory memory _Memory;
+    _reachi_3(v3414, _Memory);
     }
-  function Voters_contribute(uint256 _a0)  external payable returns (uint256 ) {
-    return _reach_internal_Voters_contribute(_a0);}
-  
-  function _reach_internal_Voters_contributed(uint256 _a0, uint256 _a1)  internal returns (bool ) {
-    T35 memory _t;
-    _t.msg.v1291.which = _enum_T33.Voters_contributed0_454;
-    _t.msg.v1291._Voters_contributed0_454.elem0 = _a0;
-    _t.msg.v1291._Voters_contributed0_454.elem1 = _a1;
-    {
-      ApiRng memory _r;
-      _reach_m8(_t, _r);
-      return _r.Voters_contributed;
-      }
+  function _reachp_4(T10 calldata v3440) external payable returns (bool) {
+    Memory memory _Memory;
+    _reachi_4(v3440, _Memory);
     }
-  function Voters_contributed(uint256 _a0, uint256 _a1)  external payable returns (bool ) {
-    return _reach_internal_Voters_contributed(_a0, _a1);}
-  
-  function _reach_internal_Voters_created(T31 memory _a0)  internal returns (bool ) {
-    T35 memory _t;
-    _t.msg.v1291.which = _enum_T33.Voters_created0_454;
-    _t.msg.v1291._Voters_created0_454.elem0 = _a0;
-    {
-      ApiRng memory _r;
-      _reach_m8(_t, _r);
-      return _r.Voters_created;
-      }
+  function _reachp_6(T9 calldata v3464) external payable returns (bool) {
+    Memory memory _Memory;
+    _reachi_6(v3464, _Memory);
     }
-  function Voters_created(T31 memory _a0)  external payable returns (bool ) {
-    return _reach_internal_Voters_created(_a0);}
-  
-  function _reach_internal_Voters_downvote()  internal returns (uint256 ) {
-    T21 memory _t;
-    _t.msg.v919.which = _enum_T19.Voters_downvote0_90;
-    {
-      ApiRng memory _r;
-      _reach_m3(_t, _r);
-      return _r.Voters_downvote;
-      }
+  function _reachp_8(T15 calldata v3474) external payable returns (bool) {
+    Memory memory _Memory;
+    _reachi_8(v3474, _Memory);
     }
-  function Voters_downvote()  external payable returns (uint256 ) {
-    return _reach_internal_Voters_downvote();}
-  
-  function _reach_internal_Voters_downvoted(uint256 _a0, uint256 _a1)  internal returns (bool ) {
-    T35 memory _t;
-    _t.msg.v1291.which = _enum_T33.Voters_downvoted0_454;
-    _t.msg.v1291._Voters_downvoted0_454.elem0 = _a0;
-    _t.msg.v1291._Voters_downvoted0_454.elem1 = _a1;
-    {
-      ApiRng memory _r;
-      _reach_m8(_t, _r);
-      return _r.Voters_downvoted;
-      }
-    }
-  function Voters_downvoted(uint256 _a0, uint256 _a1)  external payable returns (bool ) {
-    return _reach_internal_Voters_downvoted(_a0, _a1);}
-  
-  function _reach_internal_Voters_projectDown(uint256 _a0)  internal returns (bool ) {
-    T35 memory _t;
-    _t.msg.v1291.which = _enum_T33.Voters_projectDown0_454;
-    _t.msg.v1291._Voters_projectDown0_454.elem0 = _a0;
-    {
-      ApiRng memory _r;
-      _reach_m8(_t, _r);
-      return _r.Voters_projectDown;
-      }
-    }
-  function Voters_projectDown(uint256 _a0)  external payable returns (bool ) {
-    return _reach_internal_Voters_projectDown(_a0);}
-  
-  function _reach_internal_Voters_timedOut(uint256 _a0, uint256 _a1)  internal returns (bool ) {
-    T35 memory _t;
-    _t.msg.v1291.which = _enum_T33.Voters_timedOut0_454;
-    _t.msg.v1291._Voters_timedOut0_454.elem0 = _a0;
-    _t.msg.v1291._Voters_timedOut0_454.elem1 = _a1;
-    {
-      ApiRng memory _r;
-      _reach_m8(_t, _r);
-      return _r.Voters_timedOut;
-      }
-    }
-  function Voters_timedOut(uint256 _a0, uint256 _a1)  external payable returns (bool ) {
-    return _reach_internal_Voters_timedOut(_a0, _a1);}
-  
-  function _reach_internal_Voters_upvote()  internal returns (uint256 ) {
-    T21 memory _t;
-    _t.msg.v919.which = _enum_T19.Voters_upvote0_90;
-    {
-      ApiRng memory _r;
-      _reach_m3(_t, _r);
-      return _r.Voters_upvote;
-      }
-    }
-  function Voters_upvote()  external payable returns (uint256 ) {
-    return _reach_internal_Voters_upvote();}
-  
-  function _reach_internal_Voters_upvoted(uint256 _a0, uint256 _a1)  internal returns (bool ) {
-    T35 memory _t;
-    _t.msg.v1291.which = _enum_T33.Voters_upvoted0_454;
-    _t.msg.v1291._Voters_upvoted0_454.elem0 = _a0;
-    _t.msg.v1291._Voters_upvoted0_454.elem1 = _a1;
-    {
-      ApiRng memory _r;
-      _reach_m8(_t, _r);
-      return _r.Voters_upvoted;
-      }
-    }
-  function Voters_upvoted(uint256 _a0, uint256 _a1)  external payable returns (bool ) {
-    return _reach_internal_Voters_upvoted(_a0, _a1);}
-  
-  
-  receive () external payable {}
-  fallback () external payable {}
-  
   }
