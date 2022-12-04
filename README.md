@@ -3,7 +3,7 @@
 The DApp allows any user to create a proposal for other users to contribute to and vote on. If the proposal passes, it becomes a bounty funded by the contributions as well as funds raised from sponsors. If the proposal does not pass, all users who contributed can claim a refund on the amounts that each of them contributed.  
 
 
-A proposal could be a fullscale DApp, A part of a DApp, A tutorial, or frameworks or tools that make building with Reach easier and faster for developers. However, proposals are not limited to this and look forward to creative ways users use the DApp.
+A proposal could be a fullscale DApp, A part of a DApp, A tutorial, or frameworks or tools that make building DApps easier and faster for developers. However, proposals are not limited to this and look forward to creative ways users use the DApp.
 
 The central idea behind the Reach DAO is to allow projects to be executed or actualized faster by incentivising them via bounties while also providing an avenue for Developers to gain much needed experience and expertise and earn money while doing this. 
 
@@ -12,13 +12,15 @@ Those who are not developers but have projects that they may want to execute are
 
 Please be aware that you would have to sign multiple transactions on your metamask while going through most of the steps below.
 
-1. Open a few tabs in your favourite browser (we recommend at least 3 tabs).
+### Please Note that the DApp only works on polygon testnet so you should change your metamask to polygon testnet
+
+1. Open a few tabs in your favourite browser (at least 3 tabs).
 
 2. Navigate to the app at the URL https://reach-dao-five.vercel.app/``.  
 
-3. Click on the Connect Wallet button to activate wallet connect and scan the QR code.  
+3. Click on the Connect wallet button to connect your wallet.  
 
-4. Click on the Deploy button to deploy the contract as an Admin in the first tab.
+4. Click on the Deploy button to deploy the contract as an Admin/ Deployer in the first tab.
 
 5. Copy the contract information to the clipboard by clicking on the Copy to Clipboard button and then head on over to the next tab and follow steps 1 - 3 after which you can attach to the contract as a new user by clicking on Attach and pasting the contract information and clicking on the the button to attach.
 
@@ -35,6 +37,6 @@ If a proposal passes i.e it has more upvotes than downvotes after the deadline e
 I encourage you to play around with the DApp and create as many proposals as you want to and upvote, downvote and contribute to them.  
 
 
-## Authors
+## Author
 
 - Owolabi Adeyemi
