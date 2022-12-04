@@ -1,0 +1,15 @@
+{
+    "short_name": "Reach DAO",
+    "name": "Reach DAO",
+    "icons": [
+      {
+        "src": "images/logo.jpg",
+        "type": "image/png",
+        "sizes": "2500x2500"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }
