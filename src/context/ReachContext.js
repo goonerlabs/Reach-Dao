@@ -546,7 +546,7 @@ const ReachContextProvider = ({ children }) => {
       title: "AroTable",
       link: "https://github.com/Apostrophe-Corp/Reach-DAO/blob/main/README.md",
       description: `A hub for Web3 Developers`,
-      owner: user?.account?.networkAccount?.addr,
+      owner: user.account.getAddress(),
       deadline: 0,
       isProposal: false,
     },
