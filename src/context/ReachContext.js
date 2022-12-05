@@ -540,18 +540,6 @@ const ReachContextProvider = ({ children }) => {
     }
   };
 
-  const DeployerInteract = {
-    getProposal: {
-      id: 1,
-      title: "AroTable",
-      link: "https://github.com/Apostrophe-Corp/Reach-DAO/blob/main/README.md",
-      description: `A hub for Web3 Developers`,
-      owner: user.account.getAddress(),
-      deadline: 0,
-      isProposal: false,
-    },
-  };
-
   const deploy = async () => {
     const deployPromise = {};
     await new Promise(async (resolve, reject) => {
@@ -564,7 +552,15 @@ const ReachContextProvider = ({ children }) => {
         setContractInstance(ctc);
         console.log("Got here");
         const interact = {
-          ...DeployerInteract,
+          getProposal: {
+            id: 1,
+            title: "AroTable",
+            link: "https://github.com/Apostrophe-Corp/Reach-DAO/blob/main/README.md",
+            description: `A hub for Web3 Developers`,
+            owner: user.account.getAddress(),
+            deadline: 0,
+            isProposal: false,
+          },
         };
         ctc.p.Deployer(interact);
         await ctc.getInfo().then((infoStr) => {
