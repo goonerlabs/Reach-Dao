@@ -105,6 +105,18 @@ const ReachContextProvider = ({ children }) => {
   const connectAccount = async () => {
     const account = await reach.getDefaultAccount();
     account.setGasLimit(7920027)		
+    try {
+      setViews({ view: "Attaching", wrapper: "AttacherWrapper" });
+      const ctc = account.contract(backend, JSON.parse(process.env.REACT_APP_ADMIN_CONTRACT_INFO));
+      setContractInstance(ctc);
+      setContract({ ctcInfoStr });
+      ctc.events.create.monitor(createProposal);
+      ctc.events.that.monitor(acknowledge);
+      setViews({ view: "InfoCenter", wrapper: "InfoWrapper" });
+    } catch (error) {
+      console.log({ error });
+      setViews({ view: "DeployerOrAttacher", wrapper: "AppWrapper" });
+    }
     setUser({
       account,
       balance: async () => {
@@ -113,7 +125,6 @@ const ReachContextProvider = ({ children }) => {
         return balance;
       },
     });
-    setViews({ view: "DeployerOrAttacher", wrapper: "AppWrapper" });
   };
 
   const selectAttacher = () => {
