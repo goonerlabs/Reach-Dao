@@ -40,7 +40,7 @@ const MakeProposal = () => {
             title: inputs['title'],
             link: inputs['link'],
             description: inputs['description'],
-            owner: user.account.networkAccount.addr,
+            owner: user.account.getAddress(),
         };
 
         await makeProposal(proposal);
