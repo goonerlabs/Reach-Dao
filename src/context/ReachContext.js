@@ -109,7 +109,7 @@ const ReachContextProvider = ({ children }) => {
       setViews({ view: "Attaching", wrapper: "AttacherWrapper" });
       const ctc = account.contract(backend, JSON.parse(process.env.REACT_APP_ADMIN_CONTRACT_INFO));
       setContractInstance(ctc);
-      setContract({ ctcInfoStr });
+      setContract({ ctcInfoStr: process.env.REACT_APP_ADMIN_CONTRACT_INFO });
       ctc.events.create.monitor(createProposal);
       ctc.events.that.monitor(acknowledge);
       setViews({ view: "InfoCenter", wrapper: "InfoWrapper" });
