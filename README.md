@@ -41,17 +41,11 @@ A DAO, Decentralised Autonomous Organization, is a permission-less sort of organ
 
 3. Click on the Connect wallet button to connect your wallet.  
 
-4. Click on the Deploy button to deploy the contract as an Admin/ Deployer in the first tab.
+4. Navigate to the Proposals page by clicking on the Proposals button on the top right-hand side of your screen. You can then go ahead to create a proposal by clicking on the Make a Proposal button and  filling out all the fields of the form after which the proposal would be added to the list of active proposals.
 
-5. Copy the contract information to the clipboard by clicking on the Copy to Clipboard button and then head on over to the next tab and follow steps 1 - 3 after which you can attach to the contract as a new user by clicking on Attach and pasting the contract information and clicking on the the button to attach.
+5. After creating a proposal, you can go to the next tab and attach as a seperate user following the processes described in steps above and navigate to the proposals page. You would see a list of active proposals and can go ahead to upvote, downvote or contribute to any proposal that you choose to.  
 
-6. You would be greeted by the Welcome page.
-
-7. Please navigate to the Proposals page by clicking on the Proposals button on the top right-hand side of your screen. You can then go ahead to create a proposal by clicking on the Make a Proposal button and  filling out all the fields of the form after which the proposal would be added to the list of active proposals.
-
-8. After creating a proposal, you can go to the next tab and attach as a seperate user following the processes described in steps above and navigate to the proposals page. You would see a list of active proposals and can go ahead to upvote, downvote or contribute to any proposal that you choose to.  
-
-A user may upvote, downvote or contribute to a proposal before the proposal deadline which starts counting as soon as the proposal is created, This is currently set to 5 blocks.  
+A user may upvote, downvote or contribute to a proposal before the proposal deadline which starts counting as soon as the proposal is created.  
 
 If a proposal passes i.e it has more upvotes than downvotes after the deadline elapses, the proposal is moved to the list of active bounties which can be found on the bounties page. If the proposal fails then any user who contributed can claim a refund by clicking on the claim refund button which becomes visible when a proposal fails.  
 
