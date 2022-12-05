@@ -29,7 +29,7 @@ let [upVotePromise, downVotePromise, contribPromise, createPromise] = [
   {},
 ];
 const { standardUnit } = reach;
-const deadline = { ETH: 7, ALGO: 70, CFX: 700 }[reach.connector];
+const deadline = { ETH: 1000, ALGO: 100000, CFX: 70000 }[reach.connector];
 
 export const ReachContext = React.createContext();
 
